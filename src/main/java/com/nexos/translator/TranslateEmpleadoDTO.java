@@ -9,15 +9,15 @@ import com.nexos.model.Empleado;
 public class TranslateEmpleadoDTO implements Translator<Empleado, EmpleadoDTO> {
 
 	@Override
-	public EmpleadoDTO translate(Empleado empleados) {
+	public EmpleadoDTO translate(Empleado empleado) {
 		
 		EmpleadoDTO imput = new EmpleadoDTO();
-		imput.setId(empleados.getEdad());
-		imput.setNombre(empleados.getNombre());
-		imput.setApellido(empleados.getApellido());
-		imput.setEdad(empleados.getEdad());
-		imput.setFechaIngresoEmpresa(empleados.getFechaIngresoEmpresa());
-		imput.setId_Cargo(empleados.getId_Cargo());
+		imput.setId(empleado.getId());
+		imput.setNombre(empleado.getNombre());
+		imput.setApellido(empleado.getApellido());
+		imput.setEdad(empleado.getEdad());
+		imput.setFechaIngresoEmpresa(empleado.getFechaIngresoEmpresa());
+		imput.setId_Cargo(empleado.getId_Cargo());
 		return imput;
 	}
 }
