@@ -21,7 +21,7 @@ import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
 
 @RestController
-@RequestMapping("/Mercancia/")
+@RequestMapping("/Mercancia1/")
 public class MercanciaRest {
 
 	@Autowired
@@ -37,7 +37,6 @@ public class MercanciaRest {
 		mercancia1.getNombre();
 		mercancia1.getFechaIngreso();
 		mercancia1.getIdCreadoPor();
-
 		return ResponseEntity.ok(mercanciaService.getAllMercancia());
 	}
 
