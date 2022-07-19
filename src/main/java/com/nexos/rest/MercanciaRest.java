@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
 
@@ -28,7 +29,7 @@ public class MercanciaRest {
 	private MercanciaService mercanciaService;
 
 	@GetMapping(value = "{Id}")
-	private ResponseEntity<List<Mercancia>> Listar (@RequestBody Mercancia mercancia){
+	private ResponseEntity<List<Mercancia>> Listar (@RequestBody MercanciaDTO mercancia){
 		Mercancia mercancia1 = new Mercancia();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
@@ -41,7 +42,7 @@ public class MercanciaRest {
 	}
 
 	@PostMapping
-	private ResponseEntity<Mercancia> saveMercancia(@RequestBody Mercancia Mercancia) {
+	private ResponseEntity<Mercancia> saveMercancia(@RequestBody MercanciaDTO Mercancia) {
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(Mercancia);
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
@@ -60,7 +61,7 @@ public class MercanciaRest {
 	}
 
 	@PutMapping("/Actualizar/{id}")
-	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody Mercancia Mercancia) {
+	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody MercanciaDTO Mercancia) {
 		Mercancia mercancia = new Mercancia();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");

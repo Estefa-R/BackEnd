@@ -6,9 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
@@ -67,4 +65,9 @@ public class MercanciaServiceImpl implements MercanciaService {
 		}
 	}
 
+	@Override
+	public <S extends Mercancia> S save(MercanciaDTO mercancia) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
