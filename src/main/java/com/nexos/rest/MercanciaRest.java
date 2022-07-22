@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
 
@@ -41,9 +42,9 @@ public class MercanciaRest {
 	}
 
 	@PostMapping
-	private ResponseEntity<Mercancia> saveMercancia(@RequestBody Mercancia Mercancia) {
+	private ResponseEntity<Mercancia> saveMercancia(@RequestBody MercanciaDTO Mercancia) {
 		try {
-			Mercancia mercanciaGuardada = mercanciaService.save(Mercancia);
+			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(Mercancia));
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
 			LocalDateTime now = LocalDateTime.now();
 			mercanciaGuardada.setFechaModificacion(dtf.format(now));
@@ -51,6 +52,13 @@ public class MercanciaRest {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+	}
+	
+	private Mercancia castDTOEntity (MercanciaDTO dto) {
+		Mercancia obj = new Mercancia();
+		obj.setMercanciaId(dto.getId());
+		obj.setNombre(dto.getNombre());
+		return obj;
 	}
 	
 	@DeleteMapping
