@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nexos.domain.MercanciaDTO;
+
 import com.nexos.model.Mercancia;
 import com.nexos.repository.MercanciaRepository;
 import com.nexos.service.MercanciaService;
@@ -33,11 +33,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 	@Override	
 	public List<Mercancia> getAllMercancia() {
 		return mercanciaRepository.findAll();
-	}
-	
-	@Override
-	public <S extends Mercancia> S save(S entity) {
-		return mercanciaRepository.save(entity);
 	}
 
 	@Override
@@ -66,8 +61,7 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 
 	@Override
-	public <S extends Mercancia> S save(MercanciaDTO mercancia) {
-		// TODO Auto-generated method stub
-		return null;
+	public <S extends Mercancia> S save(Mercancia entity) {
+		return (S) mercanciaRepository.save(entity);
 	}
 }

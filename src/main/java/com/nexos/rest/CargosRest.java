@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nexos.model.Cargos;
-import com.nexos.model.Empleado;
-import com.nexos.model.Mercancia;
 import com.nexos.service.CargosService;
 
 @RestController

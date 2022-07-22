@@ -61,6 +61,19 @@ public class Empleado {
 	}
 	public void setFechaIngresoEmpresa(String fechaIngresoEmpresa) {
 		this.fechaIngresoEmpresa = fechaIngresoEmpresa;
+	}
+
+	public Empleado(int id, String nombre, String apellido, int edad, int id_Cargo, String fechaIngresoEmpresa) {
+		super();
+		Id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.id_Cargo = id_Cargo;
+		this.fechaIngresoEmpresa = fechaIngresoEmpresa;
+	}
+	public Empleado() {
+		super();
 	}	
-	
+		
 }

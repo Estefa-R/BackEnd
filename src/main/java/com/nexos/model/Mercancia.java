@@ -73,4 +73,27 @@ public class Mercancia implements Serializable {
 	public void setIdCreadoPor(int idCreadoPor) {
 		this.idCreadoPor = idCreadoPor;
 	}
+
+	public Mercancia(int mercanciaId, 
+			String nombre, 
+			int cantidad, 
+			String fechaIngreso, 
+			String fechaModificacion,
+			int idEmpleado, 
+			int idCreadoPor) {
+		
+		super();
+		this.mercanciaId = mercanciaId;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaModificacion = fechaModificacion;
+		this.idEmpleado = idEmpleado;
+		this.idCreadoPor = idCreadoPor;
+	}
+	
+	public Mercancia() {
+		super();
+	}
+	
 }
