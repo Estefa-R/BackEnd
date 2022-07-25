@@ -1,5 +1,7 @@
 package com.nexos.domain;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,12 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MercanciaDTO {
 	
-	private int Id;
+	private Long mercanciaId;
 	private String nombre;
-	private int cantidad;
-	private String fechaIngreso;
-	private String fechaModificacion;
-	private int idEmpleado;
-	private int idCreadoPor;
+	private String cantidad;
+	private Date fechaIngreso;
+	private Date fechaModificacion;
+	private Long idEmpleado;
+	private Long idCreadoPor;
 
 }

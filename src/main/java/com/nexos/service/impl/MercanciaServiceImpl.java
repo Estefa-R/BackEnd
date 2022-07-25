@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.repository.MercanciaRepository;
 import com.nexos.service.MercanciaService;
@@ -32,11 +32,12 @@ public class MercanciaServiceImpl implements MercanciaService {
 	
 	@Override	
 	public List<Mercancia> getAllMercancia() {
+		System.out.print("Entro a la API Impl***");
 		return mercanciaRepository.findAll();
 	}
 
 	@Override
-	public Boolean deleteById(int id) {
+	public Boolean deleteById(Long id) {
 		if (mercanciaRepository.existsById(id)) {
 			mercanciaRepository.deleteById(id);
 			return true;
@@ -50,7 +51,7 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 	
 	@Override
-	public void deleteById(int mercanciaId, int idEmpleado)	{
+	public void deleteById(Long mercanciaId, int idEmpleado)	{
 		Optional<Mercancia> mercancia = mercanciaRepository.findById(mercanciaId);
 		if(mercancia.get().getIdCreadoPor() == idEmpleado ){
 		System.out.print("El usuario tiene permisos para borrar este objeto");
@@ -61,7 +62,15 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 
 	@Override
-	public <S extends Mercancia> S save(Mercancia entity) {
-		return (S) mercanciaRepository.save(entity);
+	public Mercancia save(Mercancia mercancia) {
+		System.out.print("Entro a la API IMPL Save***");
+
+		return mercanciaRepository.save(mercancia);
 	}
+
+	@Override
+	public Mercancia save(MercanciaDTO mercancia) {
+		return null;
+	}
+
 }

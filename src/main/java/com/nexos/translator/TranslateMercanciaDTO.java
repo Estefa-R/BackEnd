@@ -12,11 +12,11 @@ public class TranslateMercanciaDTO implements Translator<Mercancia, MercanciaDTO
 	public MercanciaDTO translate(Mercancia mercancia) {
 		
 		MercanciaDTO imput = new MercanciaDTO();
-		imput.setId(mercancia.getMercanciaId());
+		imput.setMercanciaId(mercancia.getMercanciaId());
 		imput.setNombre(mercancia.getNombre());
-		imput.setCantidad(mercancia.getCantidad());
-		imput.setFechaIngreso(mercancia.getFechaIngreso());
-		imput.setFechaModificacion(mercancia.getFechaModificacion());
+//		imput.setCantidad(mercancia.getCantidad());
+//		imput.setFechaIngreso(mercancia.getFechaIngreso());
+//		imput.setFechaModificacion(mercancia.getFechaModificacion());
 		imput.setIdEmpleado(mercancia.getIdEmpleado());
 		imput.setIdCreadoPor(mercancia.getIdCreadoPor());
 		return imput;

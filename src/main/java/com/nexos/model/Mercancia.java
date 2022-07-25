@@ -1,6 +1,7 @@
 package com.nexos.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,91 +10,124 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "Mercancia")
+@Table(name = "MERCANCIA")
 public class Mercancia implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int mercanciaId;
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "mercancia_Id_seq")
+	@Column(name = "mercancia_id")
+	private Long mercanciaId;
+
 	@Column(name = "nombre")
 	private String nombre;
-	private int cantidad;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private String fechaIngreso;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private String fechaModificacion;
-	@Column(name = "idEmpleado")
-	private int idEmpleado;
-	@Column(name = "idCreadoPor")
-	private int idCreadoPor;
+	
+	@Column(name = "cantidad")
+	private String cantidad;
+	
+	@Column(name = "fecha_ingreso")
+	private Timestamp fechaIngreso;
+	
+	@Column(name = "fecha_modificacion")
+	private Timestamp fechaModificacion;
 	
 
-	public int getMercanciaId() {
+	@Column(name = "id_empleado")
+	private Long idEmpleado;
+	
+	@Column(name = "id_creado_por")
+	private Long idCreadoPor;
+
+	public Mercancia() {}
+	
+	public Mercancia(Long mercanciaId ) {
+		this.mercanciaId = mercanciaId;		
+	}
+	
+	public Mercancia(Long mercanciaId, String nombre, String cantidad, Timestamp fechaIngreso,
+			Timestamp fechaModificacion, Long idEmpleado, Long idCreadoPor) {
+		super();
+		this.mercanciaId = mercanciaId;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaModificacion = fechaModificacion;
+		this.idEmpleado = idEmpleado;
+		this.idCreadoPor = idCreadoPor;
+	}
+
+	public Long getMercanciaId() {
 		return mercanciaId;
 	}
-	public void setMercanciaId(int mercanciaId) {
+
+	public void setMercanciaId(Long mercanciaId) {
 		this.mercanciaId = mercanciaId;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getCantidad() {
+
+	public String getCantidad() {
 		return cantidad;
 	}
-	public void setCantidad(int cantidad) {
+
+	public void setCantidad(String cantidad) {
 		this.cantidad = cantidad;
 	}
-	public String getFechaIngreso() {
+
+	public Timestamp getFechaIngreso() {
 		return fechaIngreso;
 	}
-	public void setFechaIngreso(String fechaIngreso) {
+
+	public void setFechaIngreso(Timestamp fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	public String getFechaModificacion() {
+
+	public Timestamp getFechaModificacion() {
 		return fechaModificacion;
 	}
-	public void setFechaModificacion(String fechaModificacion) {
+
+	public void setFechaModificacion(Timestamp fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
 	}
-	public int getIdEmpleado() {
+
+	public Long getIdEmpleado() {
 		return idEmpleado;
 	}
-	public void setIdEmpleado(int idEmpleado) {
+
+	public void setIdEmpleado(Long idEmpleado) {
 		this.idEmpleado = idEmpleado;
 	}
-	public int getIdCreadoPor() {
+
+	public Long getIdCreadoPor() {
 		return idCreadoPor;
 	}
-	public void setIdCreadoPor(int idCreadoPor) {
+
+	public void setIdCreadoPor(Long idCreadoPor) {
 		this.idCreadoPor = idCreadoPor;
 	}
 
-	public Mercancia(int mercanciaId, 
-			String nombre, 
-			int cantidad, 
-			String fechaIngreso, 
-			String fechaModificacion,
-			int idEmpleado, 
-			int idCreadoPor) {
-		
-		super();
-		this.mercanciaId = mercanciaId;
-		this.nombre = nombre;
-		this.cantidad = cantidad;
-		this.fechaIngreso = fechaIngreso;
-		this.fechaModificacion = fechaModificacion;
-		this.idEmpleado = idEmpleado;
-		this.idCreadoPor = idCreadoPor;
+	@Override
+	public String toString() {
+		return "Mercancia [mercanciaId=" + mercanciaId + ", nombre=" + nombre + ", cantidad=" + cantidad
+				+ ", fechaIngreso=" + fechaIngreso + ", fechaModificacion=" + fechaModificacion + ", idEmpleado="
+				+ idEmpleado + ", idCreadoPor=" + idCreadoPor + "]";
 	}
 	
-	public Mercancia() {
-		super();
-	}
+	
+	
+	
+
 	
 }

@@ -10,9 +10,10 @@ public interface MercanciaService {
 	public Mercancia create (Mercancia mercancia);
 	public List<Mercancia> findAll();
 	public List<Mercancia> getAllMercancia();
-	public <S extends Mercancia> S save(Mercancia entity);
-	public Boolean deleteById(int Id);
+	public Mercancia save(Mercancia mercancia);
+	public Boolean deleteById(Long Id);
 	public void delete(Mercancia entity);
-	public void deleteById(int mercanciaId, int idEmpleado);
+	public void deleteById(Long mercanciaId, int idEmpleado);
+	public Mercancia save(MercanciaDTO mercancia);
 }
 

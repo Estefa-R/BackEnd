@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.nexos.model.Mercancia;
 
 @Repository
-public interface MercanciaRepository extends JpaRepository<Mercancia, Integer> {
+public interface MercanciaRepository extends JpaRepository<Mercancia, Long> {
 	
 }
