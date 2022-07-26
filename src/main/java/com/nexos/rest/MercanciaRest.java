@@ -38,11 +38,9 @@ public class MercanciaRest {
 	@PostMapping("/CrearMercancia")
 	private ResponseEntity<Mercancia> saveMercancia(@RequestBody MercanciaDTO mercancia) {
 		try {
-			System.out.print("Entro a la API de Crear***");
-
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia));
 			
-			mercanciaGuardada.setFechaModificacion(new Timestamp(mercancia.getFechaModificacion().getTime()));
+			mercanciaGuardada.setFechaModificacion(mercancia.getFechaModificacion());
 			return ResponseEntity.created(new URI("/Mercancia/" + mercanciaGuardada.getMercanciaId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -50,25 +48,31 @@ public class MercanciaRest {
 	}
 	
 	private Mercancia castDTOEntity (MercanciaDTO dto) {
-		System.out.print("Entro al Casteo***" + dto.getFechaIngreso());
-
 		Mercancia obj = new Mercancia();
 		
 		obj.setNombre(dto.getNombre());
 		obj.setCantidad(dto.getCantidad());
-		obj.setFechaIngreso(new Timestamp(dto.getFechaIngreso().getTime())); 
-		obj.setFechaModificacion(new Timestamp(dto.getFechaModificacion().getTime()));
+		obj.setFechaIngreso(dto.getFechaIngreso()); 
+		obj.setFechaModificacion(dto.getFechaModificacion());
 		obj.setIdEmpleado(dto.getIdEmpleado());
 		obj.setIdCreadoPor(dto.getIdCreadoPor());
 		return obj;
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "mercanciaId") Long mercanciaId, @PathVariable(value = "idEmpleado") int idEmpleado ) {
-		mercanciaService.deleteById(mercanciaId, idEmpleado);
-		return ResponseEntity.ok().build();
+	@DeleteMapping(value = "/Eliminar/{mercanciaId}/{idEmpleado}")
+	public ResponseEntity<Boolean> deleteMercancia(@PathVariable("mercanciaId") Long idEmpleado, 
+			@PathVariable("idEmpleado") ){
+		opcional<Mercancia> mercanciaSeleccionada = mercanciaService.findAll();
+		Long idCreadoPor = mercanciaSeleccionada.get().getIdEmpleado;
+		if (idEmpleadoSeleccionado != idEmpleado) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}else {
+			mercanciaService.deleteById(mercanciaId);
+		return ResponseEntity.ok(true);
+		}
 	}
-
+	
+	
 	@PutMapping("/Actualizar/{id}")
 	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody MercanciaDTO Mercancia) {
 		Mercancia mercancia = new Mercancia();
@@ -77,8 +81,8 @@ public class MercanciaRest {
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println(dtf.format(now));
 		mercancia.setNombre(Mercancia.getNombre());
-//		mercancia.setCantidad(Mercancia.getCantidad());
-//		mercancia.setFechaModificacion(dtf.format(now));
+		mercancia.setCantidad(Mercancia.getCantidad());
+		mercancia.setFechaModificacion(dtf.format(now));
 
 		com.nexos.model.Mercancia mercanciaActualizado = new Mercancia();
 		return ResponseEntity.ok(mercanciaActualizado);

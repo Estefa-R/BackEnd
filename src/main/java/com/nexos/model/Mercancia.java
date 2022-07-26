@@ -1,7 +1,6 @@
 package com.nexos.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +20,7 @@ public class Mercancia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "mercancia_Id_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "mercancia_id_seq")
 	@Column(name = "mercancia_id")
 	private Long mercanciaId;
 
@@ -32,10 +31,10 @@ public class Mercancia implements Serializable {
 	private String cantidad;
 	
 	@Column(name = "fecha_ingreso")
-	private Timestamp fechaIngreso;
+	private String fechaIngreso;
 	
 	@Column(name = "fecha_modificacion")
-	private Timestamp fechaModificacion;
+	private String fechaModificacion;
 	
 
 	@Column(name = "id_empleado")
@@ -50,8 +49,8 @@ public class Mercancia implements Serializable {
 		this.mercanciaId = mercanciaId;		
 	}
 	
-	public Mercancia(Long mercanciaId, String nombre, String cantidad, Timestamp fechaIngreso,
-			Timestamp fechaModificacion, Long idEmpleado, Long idCreadoPor) {
+	public Mercancia(Long mercanciaId, String nombre, String cantidad, String fechaIngreso,
+			String fechaModificacion, Long idEmpleado, Long idCreadoPor) {
 		super();
 		this.mercanciaId = mercanciaId;
 		this.nombre = nombre;
@@ -86,19 +85,19 @@ public class Mercancia implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Timestamp getFechaIngreso() {
+	public String getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Timestamp fechaIngreso) {
+	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public Timestamp getFechaModificacion() {
+	public String getFechaModificacion() {
 		return fechaModificacion;
 	}
 
-	public void setFechaModificacion(Timestamp fechaModificacion) {
+	public void setFechaModificacion(String fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
 	}
 

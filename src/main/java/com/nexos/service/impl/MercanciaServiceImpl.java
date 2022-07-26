@@ -63,8 +63,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 
 	@Override
 	public Mercancia save(Mercancia mercancia) {
-		System.out.print("Entro a la API IMPL Save***");
-
 		return mercanciaRepository.save(mercancia);
 	}
 
