@@ -13,7 +13,7 @@ public interface MercanciaService {
 	public Mercancia save(Mercancia mercancia);
 	public Boolean deleteById(Long Id);
 	public void delete(Mercancia entity);
-	public void deleteById(Long mercanciaId, int idEmpleado);
+	public void deleteById(long mercanciaId, Long idEmpleado);
 	public Mercancia save(MercanciaDTO mercancia);
 }
 

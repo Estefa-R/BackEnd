@@ -51,17 +51,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 	
 	@Override
-	public void deleteById(Long mercanciaId, int idEmpleado)	{
-		Optional<Mercancia> mercancia = mercanciaRepository.findById(mercanciaId);
-		if(mercancia.get().getIdCreadoPor() == idEmpleado ){
-		System.out.print("El usuario tiene permisos para borrar este objeto");
-		}else{
-		System.out.print("El usuario NO tiene permisos para borrar este objeto");
-	
-		}
-	}
-
-	@Override
 	public Mercancia save(Mercancia mercancia) {
 		return mercanciaRepository.save(mercancia);
 	}
@@ -69,6 +58,19 @@ public class MercanciaServiceImpl implements MercanciaService {
 	@Override
 	public Mercancia save(MercanciaDTO mercancia) {
 		return null;
+	}
+
+	@Override
+	public void deleteById(long mercanciaId, Long idEmpleado) {
+		Optional<Mercancia> mercancia = mercanciaRepository.findById(mercanciaId);
+		if(mercancia.get().getIdEmpleado() == idEmpleado ){
+		System.out.print("El usuario tiene permisos para borrar este objeto");
+		mercanciaRepository.deleteById(mercanciaId);
+		}else{
+		System.out.print("El usuario NO tiene permisos para borrar este objeto");
+		
+		}
+		
 	}
 
 }

@@ -24,7 +24,7 @@ import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
 
 @RestController
-@RequestMapping("/Mercancia1/")
+@RequestMapping("/Mercancia/")
 public class MercanciaRest {
 
 	@Autowired
@@ -60,21 +60,16 @@ public class MercanciaRest {
 	}
 	
 	@DeleteMapping(value = "/Eliminar/{mercanciaId}/{idEmpleado}")
-	public ResponseEntity<Boolean> deleteMercancia(@PathVariable("mercanciaId") Long idEmpleado, 
-			@PathVariable("idEmpleado") ){
-		opcional<Mercancia> mercanciaSeleccionada = mercanciaService.findAll();
-		Long idCreadoPor = mercanciaSeleccionada.get().getIdEmpleado;
-		if (idEmpleadoSeleccionado != idEmpleado) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}else {
-			mercanciaService.deleteById(mercanciaId);
-		return ResponseEntity.ok(true);
-		}
+	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "mercanciaId") Long mercanciaId, @PathVariable(value = "idEmpleado") Long idEmpleado ) {
+		mercanciaService.deleteById(mercanciaId, idEmpleado);
+		return ResponseEntity.ok().build();
 	}
 	
 	
 	@PutMapping("/Actualizar/{id}")
 	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody MercanciaDTO Mercancia) {
+		
+		System.out.print("Ingresa al metodo");
 		Mercancia mercancia = new Mercancia();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
