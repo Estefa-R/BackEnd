@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nexos.domain.EmpleadoDTO;
 import com.nexos.model.Empleado;
 import com.nexos.service.EmpleadoService;
 
@@ -22,18 +23,31 @@ public class EmpleadoRest {
 	@Autowired
 	private EmpleadoService empleadoService;
 
-	@GetMapping(value = "{Id}")
-	private ResponseEntity<List<Empleado>> getAllEmpleados() {
-		return ResponseEntity.ok(empleadoService.findAll());
+	@GetMapping(value = "/ListarEmpleados")
+	private ResponseEntity<List<Empleado>> listarEmpleados() {
+		return ResponseEntity.ok(empleadoService.getAllEmpleados());
 	}
 
-	@PostMapping
-	private ResponseEntity<Empleado> saveEmpleado(@RequestBody Empleado Empleado) {
+	@PostMapping("/CrearEmpleado")
+	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO Empleado) {
 		try {
-			Empleado empleadoGuardado = empleadoService.create(Empleado);
+			Empleado empleadoGuardado = empleadoService.create(castDTOEntity(Empleado));
+			
+			empleadoGuardado.setFechaIngresoEmpresa(Empleado.getFechaIngresoEmpresa());
 			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getId())).body(empleadoGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+	}
+	
+	private Empleado castDTOEntity (EmpleadoDTO dto) {
+		Empleado obj = new Empleado();
+		
+		obj.setNombre(dto.getNombre());
+		obj.setApellido(dto.getApellido());
+		obj.setEdad(dto.getEdad());
+		obj.setId_Cargo(dto.getId());
+		obj.setFechaIngresoEmpresa(dto.getFechaIngresoEmpresa());
+		return obj;
 	}
 }

@@ -32,7 +32,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 	
 	@Override	
 	public List<Mercancia> getAllMercancia() {
-		System.out.print("Entro a la API Impl***");
 		return mercanciaRepository.findAll();
 	}
 

@@ -19,13 +19,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	private EmpleadoRepository empleadoRepository;
 	
 	@Override
-	public Empleado create (Empleado empleado) {
-		return empleadoRepository.save(empleado);
+	public List<Empleado> getAllEmpleados() {
+		return empleadoRepository.findAll();
 	}
 	
 	@Override
-	public List<Empleado> findAll() {
-		return empleadoRepository.findAll();
+	public Empleado create (Empleado empleado) {
+		return empleadoRepository.save(empleado);
 	}
 
 }

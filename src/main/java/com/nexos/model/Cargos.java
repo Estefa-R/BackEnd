@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "Cargos")
 public class Cargos implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Id")

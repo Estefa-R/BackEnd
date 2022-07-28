@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nexos.model.Cargos;
-import com.nexos.model.Empleado;
 import com.nexos.repository.CargosRepository;
 import com.nexos.service.CargosService;
 

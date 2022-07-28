@@ -16,7 +16,7 @@ public class Mercancia implements Serializable {
 
 	/**
 	 * 
-	 */
+	 */ 
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,7 +36,6 @@ public class Mercancia implements Serializable {
 	@Column(name = "fecha_modificacion")
 	private String fechaModificacion;
 	
-
 	@Column(name = "id_empleado")
 	private Long idEmpleado;
 	
@@ -50,7 +49,7 @@ public class Mercancia implements Serializable {
 	}
 	
 	public Mercancia(Long mercanciaId, String nombre, String cantidad, String fechaIngreso,
-			String fechaModificacion, Long idEmpleado, Long idCreadoPor) {
+		String fechaModificacion, Long idEmpleado, Long idCreadoPor) {
 		super();
 		this.mercanciaId = mercanciaId;
 		this.nombre = nombre;
