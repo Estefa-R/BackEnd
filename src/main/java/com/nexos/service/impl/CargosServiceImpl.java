@@ -19,12 +19,13 @@ public class CargosServiceImpl implements CargosService{
 	private CargosRepository cargosRepository;
 	
 	@Override
-	public Cargos create (Cargos cargos) {
-		return cargosRepository.save(cargos);
+	public List<Cargos> getAllCargos() {
+		return cargosRepository.findAll();
 	}
 	
 	@Override
-	public List<Cargos> findAll() {
-		return cargosRepository.findAll();
+	public Cargos create (Cargos cargos) {
+		return cargosRepository.save(cargos);
 	}
+
 }

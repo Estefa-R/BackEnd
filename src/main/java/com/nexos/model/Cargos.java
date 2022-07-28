@@ -18,16 +18,29 @@ public class Cargos implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cargos_id_seq")
 	@Column(name = "Id")
-	private int id;
-	@Column(name = "nombre")
+	private Long id;
+	
+	@Column(name = "nombre_cargo")
 	private String nombre;
 	
-	public int getId() {
+	public Cargos() {}
+	
+	public Cargos(Long Id) {
+		this.id = Id;
+	}
+	
+	public Cargos(Long id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -36,15 +49,10 @@ public class Cargos implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public Cargos() {
-		super();
-	}
-	
-	public Cargos(int id, String nombre) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
+
+	@Override
+	public String toString() {
+		return "Cargos [id=" + id + ", nombre=" + nombre + "]";
 	}
 	
 }

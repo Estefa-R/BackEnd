@@ -17,19 +17,22 @@ import com.nexos.model.Empleado;
 import com.nexos.service.EmpleadoService;
 
 @RestController
-@RequestMapping("/Empleado/")
+@RequestMapping("/EMPLEADO/")
 public class EmpleadoRest {
 
 	@Autowired
 	private EmpleadoService empleadoService;
 
-	@GetMapping(value = "/ListarEmpleados")
+	@GetMapping("/Listar")
 	private ResponseEntity<List<Empleado>> listarEmpleados() {
+		System.out.print("Entro al metodo listar de empleados");
 		return ResponseEntity.ok(empleadoService.getAllEmpleados());
 	}
 
 	@PostMapping("/CrearEmpleado")
 	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO Empleado) {
+		
+		System.out.print("Entro al metodo**");
 		try {
 			Empleado empleadoGuardado = empleadoService.create(castDTOEntity(Empleado));
 			

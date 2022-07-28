@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CargosDTO {
 
-	private int id;
+	private Long id;
 	private String nombre;
 }

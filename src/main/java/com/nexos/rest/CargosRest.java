@@ -16,18 +16,19 @@ import com.nexos.model.Cargos;
 import com.nexos.service.CargosService;
 
 @RestController
-@RequestMapping ("/Cargos/")
+@RequestMapping ("/CARGOS/")
 public class CargosRest {
 
 	@Autowired
 	private CargosService cargosService;
 	
-	@GetMapping
-	private ResponseEntity<List<Cargos>> getAllCargo (){
-		return ResponseEntity.ok(cargosService.findAll());
+	@GetMapping("/Listar")
+	private ResponseEntity<List<Cargos>> listarCargos (){
+		System.out.print("Entro al metodo listar de cargos");
+		return ResponseEntity.ok(cargosService.getAllCargos());
 	}	
 	
-	@PostMapping
+	@PostMapping("/CrearCargos")
 	private ResponseEntity<Cargos> saveCargos(@RequestBody Cargos cargos) {
 		try {
 			Cargos cargosGuardado = cargosService.create(cargos);

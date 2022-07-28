@@ -20,6 +20,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	
 	@Override
 	public List<Empleado> getAllEmpleados() {
+		System.out.print("Entro a la API Impl***");
 		return empleadoRepository.findAll();
 	}
 	

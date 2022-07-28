@@ -6,7 +6,7 @@ import com.nexos.model.Cargos;
 
 public interface CargosService {
 	
+	public List<Cargos> getAllCargos ();
 	public Cargos create (Cargos cargos);
-	public List<Cargos> findAll();
-
+	
 }
