@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nexos.domain.CargosDTO;
 import com.nexos.model.Cargos;
 import com.nexos.service.CargosService;
 
@@ -29,12 +30,19 @@ public class CargosRest {
 	}	
 	
 	@PostMapping("/CrearCargos")
-	private ResponseEntity<Cargos> saveCargos(@RequestBody Cargos cargos) {
+	private ResponseEntity<Cargos> saveCargos(@RequestBody CargosDTO cargos) {
 		try {
-			Cargos cargosGuardado = cargosService.create(cargos);
+			Cargos cargosGuardado = cargosService.save(castDTOCargosEntity(cargos));
 			return ResponseEntity.created(new URI("/Cargos/" + cargosGuardado.getId())).body(cargosGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+	}
+	
+	private Cargos castDTOCargosEntity (CargosDTO cargos) {
+		Cargos obj = new Cargos();
+		
+		obj.setNombre(cargos.getNombre());
+		return obj;
 	}
 }

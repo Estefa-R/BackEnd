@@ -30,20 +30,20 @@ public class EmpleadoRest {
 	}
 
 	@PostMapping("/CrearEmpleado")
-	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO Empleado) {
+	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO empleado) {
 		
-		System.out.print("Entro al metodo**");
+		System.out.print("Entro al metodo crear empleado*");
 		try {
-			Empleado empleadoGuardado = empleadoService.create(castDTOEntity(Empleado));
+			Empleado empleadoGuardado = empleadoService.save(castDTOEmpleadoEntity(empleado));
 			
-			empleadoGuardado.setFechaIngresoEmpresa(Empleado.getFechaIngresoEmpresa());
+			empleadoGuardado.setFechaIngresoEmpresa(empleado.getFechaIngresoEmpresa());
 			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getId())).body(empleadoGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
 	
-	private Empleado castDTOEntity (EmpleadoDTO dto) {
+	private Empleado castDTOEmpleadoEntity (EmpleadoDTO dto) {
 		Empleado obj = new Empleado();
 		
 		obj.setNombre(dto.getNombre());

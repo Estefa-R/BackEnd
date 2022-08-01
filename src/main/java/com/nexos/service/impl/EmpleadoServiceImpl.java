@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nexos.domain.EmpleadoDTO;
 import com.nexos.model.Empleado;
 import com.nexos.repository.EmpleadoRepository;
 import com.nexos.service.EmpleadoService;
@@ -27,6 +28,16 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	@Override
 	public Empleado create (Empleado empleado) {
 		return empleadoRepository.save(empleado);
+	}
+	
+	@Override
+	public Empleado save(Empleado empleado) {
+		return empleadoRepository.save(empleado);
+	}
+	
+	@Override
+	public Empleado save(EmpleadoDTO empleado) {
+		return null;
 	}
 
 }
