@@ -12,12 +12,12 @@ public class TranslateEmpleadoDTO implements Translator<Empleado, EmpleadoDTO> {
 	public EmpleadoDTO translate(Empleado empleado) {
 		
 		EmpleadoDTO imput = new EmpleadoDTO();
-		imput.setId(empleado.getId());
+		imput.setEmpleado_id(empleado.getEmpleado_id());
 		imput.setNombre(empleado.getNombre());
 		imput.setApellido(empleado.getApellido());
 		imput.setEdad(empleado.getEdad());
-		imput.setFechaIngresoEmpresa(empleado.getFechaIngresoEmpresa());
-		imput.setId_Cargo(empleado.getId_Cargo());
+		imput.setId_cargo(empleado.getId_cargo());
+		imput.setFecha_ingreso_empresa(empleado.getFecha_ingreso_empresa());
 		return imput;
 	}
 }

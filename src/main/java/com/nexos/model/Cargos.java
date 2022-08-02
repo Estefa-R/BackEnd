@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Cargos")
+@Table(name = "CARGOS")
 public class Cargos implements Serializable {
 
 	/**
@@ -19,40 +19,44 @@ public class Cargos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cargos_id_seq")
-	@Column(name = "Id")
-	private Long id;
+	@Column(name = "cargos_id")
+	private Long cargos_id;
 	
 	@Column(name = "nombre_cargo")
-	private String nombre;
+	private String nombre_cargo;
 	
 	public Cargos() {}
 	
-	public Cargos(Long Id) {
-		this.id = Id;
+	public Cargos(Long cargos_id) {
+		this.cargos_id = cargos_id;
 	}
 	
-	public Cargos(Long id, String nombre) {
+	public Cargos(Long cargos_id, String nombre_cargo) {
 		super();
-		this.id = id;
-		this.nombre = nombre;
+		this.cargos_id = cargos_id;
+		this.nombre_cargo = nombre_cargo;
 	}
+
 	
-	public Long getId() {
-		return id;
+	public Long getCargos_id() {
+		return cargos_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setCargos_id(Long cargos_id) {
+		this.cargos_id = cargos_id;
 	}
-	public String getNombre() {
-		return nombre;
+
+	public String getNombre_cargo() {
+		return nombre_cargo;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setNombre_cargo(String nombre_cargo) {
+		this.nombre_cargo = nombre_cargo;
 	}
 
 	@Override
 	public String toString() {
-		return "Cargos [id=" + id + ", nombre=" + nombre + "]";
+		return "Cargos [cargos_id=" + cargos_id + ", nombre_cargo=" + nombre_cargo + "]";
 	}
 	
 }

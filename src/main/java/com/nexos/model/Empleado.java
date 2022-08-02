@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Empleado")
+@Table(name = "EMPLEADO")
 public class Empleado implements Serializable {
 
 	/**
@@ -20,7 +20,7 @@ public class Empleado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "empleado_id_seq")
 	@Column(name = "empleado_id")
-	private Long Id;
+	private Long empleado_id;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -32,68 +32,79 @@ public class Empleado implements Serializable {
 	private int edad;
 	
 	@Column(name = "id_cargo")
-	private Long id_Cargo;
+	private Long id_cargo;
 	
 	@Column(name = "fecha_ingreso_empresa")
-	private String fechaIngresoEmpresa;
+	private String fecha_ingreso_empresa;
 	
 	public Empleado () {}
 	
-	public Empleado (Long Id) {
-		this.Id = Id;
+	public Empleado (Long empleado_id) {
+		this.empleado_id = empleado_id;
 	}
 	
-	public Empleado(Long id, String nombre, String apellido, int edad, Long id_Cargo, String fechaIngresoEmpresa) {
+	public Empleado(Long empleado_id, String nombre, String apellido, int edad, Long id_cargo, String fecha_ingreso_empresa) {
 		super();
-		Id = id;
+		this.empleado_id = empleado_id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
-		this.id_Cargo = id_Cargo;
-		this.fechaIngresoEmpresa = fechaIngresoEmpresa;
+		this.id_cargo = id_cargo;
+		this.fecha_ingreso_empresa = fecha_ingreso_empresa;
 	}
 
-	public Long getId() {
-		return Id;
+	public Long getEmpleado_id() {
+		return empleado_id;
 	}
-	public void setId(Long id) {
-		Id = id;
+
+	public void setEmpleado_id(Long empleado_id) {
+		this.empleado_id = empleado_id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public int getEdad() {
 		return edad;
 	}
+
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-	public Long getId_Cargo() {
-		return id_Cargo;
+
+	public Long getId_cargo() {
+		return id_cargo;
 	}
-	public void setId_Cargo(Long id_Cargo) {
-		this.id_Cargo = id_Cargo;
+
+	public void setId_cargo(Long id_cargo) {
+		this.id_cargo = id_cargo;
 	}
-	public String getFechaIngresoEmpresa() {
-		return fechaIngresoEmpresa;
+
+	public String getFecha_ingreso_empresa() {
+		return fecha_ingreso_empresa;
 	}
-	public void setFechaIngresoEmpresa(String fechaIngresoEmpresa) {
-		this.fechaIngresoEmpresa = fechaIngresoEmpresa;
+
+	public void setFecha_ingreso_empresa(String fecha_ingreso_empresa) {
+		this.fecha_ingreso_empresa = fecha_ingreso_empresa;
 	}
 
 	@Override
 	public String toString() {
-		return "Empleado [Id=" + Id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", id_Cargo="
-				+ id_Cargo + ", fechaIngresoEmpresa=" + fechaIngresoEmpresa + "]";
+		return "Empleado [empleado_id=" + empleado_id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", id_Cargo="
+				+ id_cargo + ", fecha_ingreso_empresa=" + fecha_ingreso_empresa + "]";
 	}
 	
 }

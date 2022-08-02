@@ -9,8 +9,8 @@ public class TraslateCargosDTO implements Translator<Cargos, CargosDTO> {
 	public CargosDTO translate(Cargos cargos) {
 		
 		CargosDTO imput = new CargosDTO();
-		imput.setId(cargos.getId());
-		imput.setNombre(cargos.getNombre());
+		imput.setCargos_id(cargos.getCargos_id());
+		imput.setNombre_cargo(cargos.getNombre_cargo());
 		return imput;
 	}
 }

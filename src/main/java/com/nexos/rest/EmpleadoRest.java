@@ -17,7 +17,7 @@ import com.nexos.model.Empleado;
 import com.nexos.service.EmpleadoService;
 
 @RestController
-@RequestMapping("/EMPLEADO/")
+@RequestMapping("/Empleado/")
 public class EmpleadoRest {
 
 	@Autowired
@@ -25,19 +25,17 @@ public class EmpleadoRest {
 
 	@GetMapping("/Listar")
 	private ResponseEntity<List<Empleado>> listarEmpleados() {
-		System.out.print("Entro al metodo listar de empleados");
+		System.out.print("Entro al metodo listar de empleados****");
 		return ResponseEntity.ok(empleadoService.getAllEmpleados());
 	}
 
 	@PostMapping("/CrearEmpleado")
 	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO empleado) {
-		
-		System.out.print("Entro al metodo crear empleado*");
 		try {
 			Empleado empleadoGuardado = empleadoService.save(castDTOEmpleadoEntity(empleado));
 			
-			empleadoGuardado.setFechaIngresoEmpresa(empleado.getFechaIngresoEmpresa());
-			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getId())).body(empleadoGuardado);
+			empleadoGuardado.setFecha_ingreso_empresa(empleado.getFecha_ingreso_empresa());
+			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getEmpleado_id())).body(empleadoGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
@@ -49,8 +47,8 @@ public class EmpleadoRest {
 		obj.setNombre(dto.getNombre());
 		obj.setApellido(dto.getApellido());
 		obj.setEdad(dto.getEdad());
-		obj.setId_Cargo(dto.getId());
-		obj.setFechaIngresoEmpresa(dto.getFechaIngresoEmpresa());
+		obj.setId_cargo(dto.getId_cargo());
+		obj.setFecha_ingreso_empresa(dto.getFecha_ingreso_empresa());
 		return obj;
 	}
 }

@@ -17,7 +17,7 @@ import com.nexos.model.Cargos;
 import com.nexos.service.CargosService;
 
 @RestController
-@RequestMapping ("/CARGOS/")
+@RequestMapping ("/Cargos/")
 public class CargosRest {
 
 	@Autowired
@@ -25,15 +25,14 @@ public class CargosRest {
 	
 	@GetMapping("/Listar")
 	private ResponseEntity<List<Cargos>> listarCargos (){
-		System.out.print("Entro al metodo listar de cargos");
 		return ResponseEntity.ok(cargosService.getAllCargos());
 	}	
 	
 	@PostMapping("/CrearCargos")
-	private ResponseEntity<Cargos> saveCargos(@RequestBody CargosDTO cargos) {
+	private ResponseEntity<Cargos> saveCargos(@RequestBody CargosDTO cargos) {;
 		try {
 			Cargos cargosGuardado = cargosService.save(castDTOCargosEntity(cargos));
-			return ResponseEntity.created(new URI("/Cargos/" + cargosGuardado.getId())).body(cargosGuardado);
+			return ResponseEntity.created(new URI("/Cargos/" + cargosGuardado.getCargos_id())).body(cargosGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
@@ -42,7 +41,7 @@ public class CargosRest {
 	private Cargos castDTOCargosEntity (CargosDTO cargos) {
 		Cargos obj = new Cargos();
 		
-		obj.setNombre(cargos.getNombre());
+		obj.setNombre_cargo(cargos.getNombre_cargo());
 		return obj;
 	}
 }

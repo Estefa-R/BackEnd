@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CargosDTO {
 
-	private Long id;
-	private String nombre;
+	private Long cargos_id;
+	private String nombre_cargo;
 }

@@ -122,10 +122,4 @@ public class Mercancia implements Serializable {
 				+ ", fechaIngreso=" + fechaIngreso + ", fechaModificacion=" + fechaModificacion + ", idEmpleado="
 				+ idEmpleado + ", idCreadoPor=" + idCreadoPor + "]";
 	}
-	
-	
-	
-	
-
-	
 }

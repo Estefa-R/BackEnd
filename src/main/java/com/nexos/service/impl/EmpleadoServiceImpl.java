@@ -27,6 +27,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	
 	@Override
 	public Empleado create (Empleado empleado) {
+		System.out.print("Entro a la API Impl crear empleado***");
 		return empleadoRepository.save(empleado);
 	}
 	
