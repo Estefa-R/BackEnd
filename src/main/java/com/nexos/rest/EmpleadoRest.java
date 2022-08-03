@@ -25,7 +25,6 @@ public class EmpleadoRest {
 
 	@GetMapping("/Listar")
 	private ResponseEntity<List<Empleado>> listarEmpleados() {
-		System.out.print("Entro al metodo listar de empleados****");
 		return ResponseEntity.ok(empleadoService.getAllEmpleados());
 	}
 

@@ -21,13 +21,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	
 	@Override
 	public List<Empleado> getAllEmpleados() {
-		System.out.print("Entro a la API Impl***");
 		return empleadoRepository.findAll();
 	}
 	
 	@Override
 	public Empleado create (Empleado empleado) {
-		System.out.print("Entro a la API Impl crear empleado***");
 		return empleadoRepository.save(empleado);
 	}
 	

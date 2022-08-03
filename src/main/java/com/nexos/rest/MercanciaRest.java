@@ -66,8 +66,6 @@ public class MercanciaRest {
 	
 	@PutMapping("/Actualizar/{id}")
 	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody MercanciaDTO Mercancia) {
-		
-		System.out.print("Ingresa al metodo");
 		Mercancia mercancia = new Mercancia();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
