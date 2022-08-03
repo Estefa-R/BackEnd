@@ -68,8 +68,28 @@ public class MercanciaServiceImpl implements MercanciaService {
 		}else{
 		System.out.print("El usuario NO tiene permisos para borrar este objeto");
 		
-		}
-		
+		}	
 	}
 
+	@Override
+	public void actualizarMercancia(MercanciaDTO Mercancia, Long mercanciaId, Long idEmpleado) {
+		System.out.print("Ingresa al metodo");
+		Optional<Mercancia> mercancia = mercanciaRepository.findById(mercanciaId);
+		Mercancia mercancia1 = mercancia.get();
+
+			
+			if(mercancia.get().getIdEmpleado() == idEmpleado ){
+				
+			mercancia1.setIdEmpleado(Mercancia.getIdEmpleado());
+			System.out.print("El usuario tiene permisos para actualizar este objeto");
+			
+			mercancia1.setNombre(Mercancia.getNombre());
+			mercancia1.setCantidad(Mercancia.getCantidad());
+			mercancia1.setFechaModificacion(Mercancia.getFechaModificacion());
+			}else{
+			System.out.print("El usuario NO tiene permisos para actualizar este objeto");
+			
+			
+			}
+	}
 }

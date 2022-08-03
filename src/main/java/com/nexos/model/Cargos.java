@@ -19,44 +19,40 @@ public class Cargos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cargos_id_seq")
-	@Column(name = "cargos_id")
-	private Long cargos_id;
+	@Column(name = "id")
+	private Long id;
 	
-	@Column(name = "nombre_cargo")
-	private String nombre_cargo;
+	@Column(name = "cargo")
+	private String cargo;
 	
 	public Cargos() {}
 	
-	public Cargos(Long cargos_id) {
-		this.cargos_id = cargos_id;
-	}
-	
-	public Cargos(Long cargos_id, String nombre_cargo) {
+	public Cargos(Long id, String cargo) {
 		super();
-		this.cargos_id = cargos_id;
-		this.nombre_cargo = nombre_cargo;
+		this.id = id;
+		this.cargo = cargo;
 	}
 
-	
-	public Long getCargos_id() {
-		return cargos_id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCargos_id(Long cargos_id) {
-		this.cargos_id = cargos_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getNombre_cargo() {
-		return nombre_cargo;
+	public String getCargo() {
+		return cargo;
 	}
 
-	public void setNombre_cargo(String nombre_cargo) {
-		this.nombre_cargo = nombre_cargo;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Cargos [cargos_id=" + cargos_id + ", nombre_cargo=" + nombre_cargo + "]";
+		return "Cargos [id=" + id + ", cargo=" + cargo + "]";
 	}
 	
 }

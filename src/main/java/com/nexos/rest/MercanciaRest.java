@@ -1,8 +1,6 @@
 package com.nexos.rest;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,7 @@ public class MercanciaRest {
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia));
 			
-			mercanciaGuardada.setFechaModificacion(mercancia.getFechaModificacion());
+			mercanciaGuardada.setFechaIngreso(mercancia.getFechaIngreso());
 			return ResponseEntity.created(new URI("/Mercancia/" + mercanciaGuardada.getMercanciaId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -47,7 +45,6 @@ public class MercanciaRest {
 	
 	private Mercancia castDTOEntity (MercanciaDTO dto) {
 		Mercancia obj = new Mercancia();
-		
 		obj.setNombre(dto.getNombre());
 		obj.setCantidad(dto.getCantidad());
 		obj.setFechaIngreso(dto.getFechaIngreso()); 
@@ -64,19 +61,10 @@ public class MercanciaRest {
 	}
 	
 	
-	@PutMapping("/Actualizar/{id}")
-	public ResponseEntity<Mercancia> actualizarMercancia(@PathVariable int id, @RequestBody MercanciaDTO Mercancia) {
-		Mercancia mercancia = new Mercancia();
-
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		System.out.println(dtf.format(now));
-		mercancia.setNombre(Mercancia.getNombre());
-		mercancia.setCantidad(Mercancia.getCantidad());
-		mercancia.setFechaModificacion(dtf.format(now));
-
-		com.nexos.model.Mercancia mercanciaActualizado = new Mercancia();
-		return ResponseEntity.ok(mercanciaActualizado);
+	@PutMapping(value = "/Actualizar/{mercanciaId}}/{idEmpleado}")
+	public ResponseEntity<Object> actualizarMercancia(@RequestBody MercanciaDTO Mercancia, @PathVariable Long mercanciaId, @PathVariable(value = "idEmpleado") Long idEmpleado) {
+		this.mercanciaService.actualizarMercancia(Mercancia, mercanciaId, idEmpleado);
+		return ResponseEntity.ok(Boolean.TRUE);
 	}
-
+	
 }

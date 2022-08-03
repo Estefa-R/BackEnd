@@ -15,5 +15,6 @@ public interface MercanciaService {
 	public void delete(Mercancia entity);
 	public void deleteById(long mercanciaId, Long idEmpleado);
 	public Mercancia save(MercanciaDTO mercancia);
+	void actualizarMercancia(MercanciaDTO mercancia, Long mercanciaId, Long idEmpleado);
 }
 
