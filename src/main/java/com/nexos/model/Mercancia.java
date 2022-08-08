@@ -21,8 +21,8 @@ public class Mercancia implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "mercancia_id_seq")
-	@Column(name = "mercancia_id")
-	private Long mercanciaId;
+	@Column(name = "id")
+	private Long Id;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -38,34 +38,30 @@ public class Mercancia implements Serializable {
 	
 	@Column(name = "id_empleado")
 	private Long idEmpleado;
-	
-	@Column(name = "id_creado_por")
-	private Long idCreadoPor;
 
 	public Mercancia() {}
 	
-	public Mercancia(Long mercanciaId ) {
-		this.mercanciaId = mercanciaId;		
+	public Mercancia(Long Id ) {
+		this.Id = Id;		
 	}
 	
-	public Mercancia(Long mercanciaId, String nombre, String cantidad, String fechaIngreso,
-		String fechaModificacion, Long idEmpleado, Long idCreadoPor) {
+	public Mercancia(Long Id, String nombre, String cantidad, String fechaIngreso,
+		String fechaModificacion, Long idEmpleado) {
 		super();
-		this.mercanciaId = mercanciaId;
+		this.Id = Id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaModificacion = fechaModificacion;
 		this.idEmpleado = idEmpleado;
-		this.idCreadoPor = idCreadoPor;
 	}
 
-	public Long getMercanciaId() {
-		return mercanciaId;
+	public Long getId() {
+		return Id;
 	}
 
-	public void setMercanciaId(Long mercanciaId) {
-		this.mercanciaId = mercanciaId;
+	public void setId(Long Id) {
+		this.Id = Id;
 	}
 
 	public String getNombre() {
@@ -108,18 +104,11 @@ public class Mercancia implements Serializable {
 		this.idEmpleado = idEmpleado;
 	}
 
-	public Long getIdCreadoPor() {
-		return idCreadoPor;
-	}
-
-	public void setIdCreadoPor(Long idCreadoPor) {
-		this.idCreadoPor = idCreadoPor;
-	}
 
 	@Override
 	public String toString() {
-		return "Mercancia [mercanciaId=" + mercanciaId + ", nombre=" + nombre + ", cantidad=" + cantidad
+		return "Mercancia [Id=" + Id + ", nombre=" + nombre + ", cantidad=" + cantidad
 				+ ", fechaIngreso=" + fechaIngreso + ", fechaModificacion=" + fechaModificacion + ", idEmpleado="
-				+ idEmpleado + ", idCreadoPor=" + idCreadoPor + "]";
+				+ idEmpleado + "]";
 	}
 }

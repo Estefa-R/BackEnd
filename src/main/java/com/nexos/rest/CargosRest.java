@@ -44,4 +44,6 @@ public class CargosRest {
 		obj.setCargo(cargos.getCargo());
 		return obj;
 	}
+	
+	
 }

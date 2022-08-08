@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "EMPLEADO")
 public class Empleado implements Serializable {
@@ -50,54 +53,6 @@ public class Empleado implements Serializable {
 		this.apellido = apellido;
 		this.edad = edad;
 		this.id_cargo = id_cargo;
-		this.fecha_ingreso_empresa = fecha_ingreso_empresa;
-	}
-
-	public Long getEmpleado_id() {
-		return empleado_id;
-	}
-
-	public void setEmpleado_id(Long empleado_id) {
-		this.empleado_id = empleado_id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public int getEdad() {
-		return edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-	public Long getId_cargo() {
-		return id_cargo;
-	}
-
-	public void setId_cargo(Long id_cargo) {
-		this.id_cargo = id_cargo;
-	}
-
-	public String getFecha_ingreso_empresa() {
-		return fecha_ingreso_empresa;
-	}
-
-	public void setFecha_ingreso_empresa(String fecha_ingreso_empresa) {
 		this.fecha_ingreso_empresa = fecha_ingreso_empresa;
 	}
 

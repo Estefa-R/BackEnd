@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MercanciaDTO {
 	
-	private Long mercanciaId;
+	private Long Id;
 	private String nombre;
 	private String cantidad;
 	private String fechaIngreso;

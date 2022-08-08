@@ -11,10 +11,10 @@ public interface MercanciaService {
 	public List<Mercancia> findAll();
 	public List<Mercancia> getAllMercancia();
 	public Mercancia save(Mercancia mercancia);
-	public Boolean deleteById(Long Id);
+	public Boolean deleteById(Long id);
 	public void delete(Mercancia entity);
-	public void deleteById(long mercanciaId, Long idEmpleado);
+	public void deleteById(long id, Long idEmpleado);
 	public Mercancia save(MercanciaDTO mercancia);
-	void actualizarMercancia(MercanciaDTO mercancia, Long mercanciaId, Long idEmpleado);
+	void updateMercancia(MercanciaDTO mercancia, Long id, Long idEmpleado);
 }
 
