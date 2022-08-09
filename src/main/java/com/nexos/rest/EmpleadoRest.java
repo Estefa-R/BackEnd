@@ -16,6 +16,7 @@ import com.nexos.domain.EmpleadoDTO;
 import com.nexos.model.Empleado;
 import com.nexos.service.EmpleadoService;
 
+
 @RestController
 @RequestMapping("/Empleado/")
 public class EmpleadoRest {
