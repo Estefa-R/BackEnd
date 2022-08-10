@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.nexos.model.Cargos;
 
 @Repository
-public interface CargosRepository extends JpaRepository<Cargos, Integer>{
+public interface CargosRepository extends JpaRepository<Cargos, Long>{
 
 }
