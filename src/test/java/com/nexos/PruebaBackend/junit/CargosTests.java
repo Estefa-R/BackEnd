@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 
 import com.nexos.model.Cargos;
 import com.nexos.repository.CargosRepository;
@@ -21,6 +22,7 @@ public class CargosTests {
 	private CargosRepository repository;
 	
 	@Test
+	@Rollback(false)
 	public void saveCargosTest() {
 		Cargos cargos = new Cargos (String, "Gerente de proyectos");
 		Cargos cargosSaveTest = repository.save(cargos);
@@ -28,5 +30,4 @@ public class CargosTests {
 		assertNotNull(cargosSaveTest);
 	}
 	
-
 }
