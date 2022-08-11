@@ -12,7 +12,7 @@ public class TranslateEmpleadoDTO implements Translator<Empleado, EmpleadoDTO> {
 	public EmpleadoDTO translate(Empleado empleado) {
 		
 		EmpleadoDTO imput = new EmpleadoDTO();
-		imput.setEmpleado_id(empleado.getEmpleado_id());
+		imput.setId(empleado.getId());
 		imput.setNombre(empleado.getNombre());
 		imput.setApellido(empleado.getApellido());
 		imput.setEdad(empleado.getEdad());

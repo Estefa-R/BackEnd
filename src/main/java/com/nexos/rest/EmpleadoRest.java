@@ -34,7 +34,7 @@ public class EmpleadoRest {
 		try {
 			Empleado empleadoGuardado = empleadoService.save(castDTOEmpleadoEntity(empleado));
 			empleadoGuardado.setFecha_ingreso_empresa(empleado.getFecha_ingreso_empresa());
-			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getEmpleado_id())).body(empleadoGuardado);
+			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getId())).body(empleadoGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

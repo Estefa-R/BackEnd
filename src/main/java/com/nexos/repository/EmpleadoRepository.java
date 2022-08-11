@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.nexos.model.Empleado;
 
 @Repository
-public interface EmpleadoRepository extends JpaRepository<Empleado, Integer>{
+public interface EmpleadoRepository extends JpaRepository<Empleado, Long>{
 
+	
 }

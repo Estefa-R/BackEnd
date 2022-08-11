@@ -22,8 +22,8 @@ public class Empleado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "empleado_id_seq")
-	@Column(name = "empleado_id")
-	private Long empleado_id;
+	@Column(name = "id")
+	private Long id;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -40,15 +40,14 @@ public class Empleado implements Serializable {
 	@Column(name = "fecha_ingreso_empresa")
 	private String fecha_ingreso_empresa;
 	
-	public Empleado () {}
-	
-	public Empleado (Long empleado_id) {
-		this.empleado_id = empleado_id;
+		
+	public Empleado (Long id) {
+		this.id = id;
 	}
 	
-	public Empleado(Long empleado_id, String nombre, String apellido, int edad, Long id_cargo, String fecha_ingreso_empresa) {
+	public Empleado(Long id, String nombre, String apellido, int edad, long id_cargo, String fecha_ingreso_empresa) {
 		super();
-		this.empleado_id = empleado_id;
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
@@ -56,9 +55,13 @@ public class Empleado implements Serializable {
 		this.fecha_ingreso_empresa = fecha_ingreso_empresa;
 	}
 
+	public Empleado() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
-		return "Empleado [empleado_id=" + empleado_id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", id_Cargo="
+		return "Empleado [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", id_Cargo="
 				+ id_cargo + ", fecha_ingreso_empresa=" + fecha_ingreso_empresa + "]";
 	}
 	
