@@ -60,9 +60,9 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 
 	@Override
-	public void deleteById(long id, Long idEmpleado) {
+	public void deleteById(long id, Long id_empleado) {
 		Optional<Mercancia> mercancia = mercanciaRepository.findById(id);
-		if(mercancia.get().getIdEmpleado() == idEmpleado ){
+		if(mercancia.get().getId_empleado() == id_empleado ){
 		System.out.print("El usuario tiene permisos para borrar este objeto");
 		mercanciaRepository.deleteById(id);
 		}else{
@@ -72,17 +72,17 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 
 	@Override
-	public void updateMercancia(MercanciaDTO Mercancia, Long id, Long idEmpleado) {
+	public void updateMercancia(MercanciaDTO Mercancia, Long id, Long id_empleado) {
 	Optional<Mercancia> mercancia = this.mercanciaRepository.findById(id);
 	
 
 		Mercancia mercancia1 = mercancia.get();
 		mercancia1.setNombre(Mercancia.getNombre());
 		mercancia1.setCantidad(Mercancia.getCantidad());
-		mercancia1.setFechaModificacion(Mercancia.getFechaModificacion());
+		mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
 		
-		if(mercancia.get().getIdEmpleado() == idEmpleado ){
-		mercancia1.setIdEmpleado(Mercancia.getIdEmpleado());
+		if(mercancia.get().getId_empleado() == id_empleado ){
+		mercancia1.setId_empleado(Mercancia.getId_empleado());
 		System.out.print("El usuario tiene permisos para editar este objeto");
 		
 		

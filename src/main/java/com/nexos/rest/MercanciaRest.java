@@ -38,7 +38,7 @@ public class MercanciaRest {
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia));
 			
-			mercanciaGuardada.setFechaIngreso(mercancia.getFechaIngreso());
+			mercanciaGuardada.setFecha_ingreso(mercancia.getFecha_ingreso());
 			return ResponseEntity.created(new URI("/Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -49,9 +49,9 @@ public class MercanciaRest {
 		Mercancia obj = new Mercancia();
 		obj.setNombre(dto.getNombre());
 		obj.setCantidad(dto.getCantidad());
-		obj.setFechaIngreso(dto.getFechaIngreso()); 
-		obj.setFechaModificacion(dto.getFechaModificacion());
-		obj.setIdEmpleado(dto.getIdEmpleado());
+		obj.setFecha_ingreso(dto.getFecha_ingreso()); 
+		obj.setFecha_modificacion(dto.getFecha_modificacion());
+		obj.setId_empleado(dto.getId_empleado());
 		return obj;
 	}
 	

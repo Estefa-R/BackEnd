@@ -15,9 +15,9 @@ public class TranslateMercanciaDTO implements Translator<Mercancia, MercanciaDTO
 		imput.setId(mercancia.getId());
 		imput.setNombre(mercancia.getNombre());
 		imput.setCantidad(mercancia.getCantidad());
-		imput.setFechaIngreso(mercancia.getFechaIngreso());
-		imput.setFechaModificacion(mercancia.getFechaModificacion());
-		imput.setIdEmpleado(mercancia.getIdEmpleado());
+		imput.setFecha_ingreso(mercancia.getFecha_ingreso());
+		imput.setFecha_modificacion(mercancia.getFecha_modificacion());
+		imput.setId_empleado(mercancia.getId_empleado());
 		return imput;
 	}
 

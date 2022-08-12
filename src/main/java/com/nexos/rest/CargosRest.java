@@ -17,7 +17,7 @@ import com.nexos.model.Cargos;
 import com.nexos.service.CargosService;
 
 @RestController
-@RequestMapping ("/Cargos/")
+@RequestMapping ("/Cargos")
 public class CargosRest {
 
 	@Autowired

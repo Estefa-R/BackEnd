@@ -31,13 +31,13 @@ public class Mercancia implements Serializable {
 	private String cantidad;
 	
 	@Column(name = "fecha_ingreso")
-	private String fechaIngreso;
+	private String fecha_ingreso;
 	
 	@Column(name = "fecha_modificacion")
-	private String fechaModificacion;
+	private String fecha_modificacion;
 	
 	@Column(name = "id_empleado")
-	private Long idEmpleado;
+	private Long id_empleado;
 
 	public Mercancia() {}
 	
@@ -45,23 +45,23 @@ public class Mercancia implements Serializable {
 		this.Id = Id;		
 	}
 	
-	public Mercancia(Long Id, String nombre, String cantidad, String fechaIngreso,
-		String fechaModificacion, Long idEmpleado) {
+	public Mercancia(Long Id, String nombre, String cantidad, String fecha_ingreso,
+		String fecha_modificacion, Long id_empleado) {
 		super();
 		this.Id = Id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
-		this.fechaIngreso = fechaIngreso;
-		this.fechaModificacion = fechaModificacion;
-		this.idEmpleado = idEmpleado;
+		this.fecha_ingreso = fecha_ingreso;
+		this.fecha_modificacion = fecha_modificacion;
+		this.id_empleado = id_empleado;
 	}
 
 	public Long getId() {
 		return Id;
 	}
 
-	public void setId(Long Id) {
-		this.Id = Id;
+	public void setId(Long id) {
+		Id = id;
 	}
 
 	public String getNombre() {
@@ -80,35 +80,34 @@ public class Mercancia implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public String getFechaIngreso() {
-		return fechaIngreso;
+	public String getFecha_ingreso() {
+		return fecha_ingreso;
 	}
 
-	public void setFechaIngreso(String fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
+	public void setFecha_ingreso(String fecha_ingreso) {
+		this.fecha_ingreso = fecha_ingreso;
 	}
 
-	public String getFechaModificacion() {
-		return fechaModificacion;
+	public String getFecha_modificacion() {
+		return fecha_modificacion;
 	}
 
-	public void setFechaModificacion(String fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
+	public void setFecha_modificacion(String fecha_modificacion) {
+		this.fecha_modificacion = fecha_modificacion;
 	}
 
-	public Long getIdEmpleado() {
-		return idEmpleado;
+	public Long getId_empleado() {
+		return id_empleado;
 	}
 
-	public void setIdEmpleado(Long idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public void setId_empleado(Long id_empleado) {
+		this.id_empleado = id_empleado;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Mercancia [Id=" + Id + ", nombre=" + nombre + ", cantidad=" + cantidad
-				+ ", fechaIngreso=" + fechaIngreso + ", fechaModificacion=" + fechaModificacion + ", idEmpleado="
-				+ idEmpleado + "]";
+				+ ", fecha_ingreso=" + fecha_ingreso + ", fecha_modificacion=" + fecha_modificacion + ", id_empleado="
+				+ id_empleado + "]";
 	}
 }
