@@ -55,14 +55,14 @@ public class MercanciaRest {
 		return obj;
 	}
 	
-	@DeleteMapping(value = "/Eliminar/{id}/{idEmpleado}")
+	@DeleteMapping(value = "/delete/{id}/{idEmpleado}")
 	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "id") Long id, @PathVariable(value = "idEmpleado") Long idEmpleado ) {
 		mercanciaService.deleteById(id, idEmpleado);
 		return ResponseEntity.ok().build();
 	}
 	
 	
-	@PutMapping(value = "/Editar/{id}/{idEmpleado}")
+	@PutMapping(value = "/update/{id}/{idEmpleado}")
 	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia, @PathVariable Long id, @PathVariable(value = "idEmpleado") Long idEmpleado) {
 		this.mercanciaService.updateMercancia(Mercancia, id, idEmpleado);
 		return ResponseEntity.ok(Boolean.TRUE);
