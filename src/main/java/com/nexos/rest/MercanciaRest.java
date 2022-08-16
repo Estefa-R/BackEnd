@@ -47,7 +47,7 @@ public class MercanciaRest {
 	
 	private Mercancia castDTOEntity (MercanciaDTO dto) {
 		Mercancia obj = new Mercancia();
-		obj.setNombre(dto.getNombre());
+		obj.setNombre_producto(dto.getNombre_producto());
 		obj.setCantidad(dto.getCantidad());
 		obj.setFecha_ingreso(dto.getFecha_ingreso()); 
 		obj.setFecha_modificacion(dto.getFecha_modificacion());
@@ -55,16 +55,16 @@ public class MercanciaRest {
 		return obj;
 	}
 	
-	@DeleteMapping(value = "/delete/{id}/{idEmpleado}")
-	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "id") Long id, @PathVariable(value = "idEmpleado") Long idEmpleado ) {
-		mercanciaService.deleteById(id, idEmpleado);
+	@DeleteMapping(value = "/deleteMercancia/{id}/{id_empleado}")
+	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "id") Long id, @PathVariable(value = "id_empleado") Long id_empleado ) {
+		mercanciaService.deleteById(id, id_empleado);
 		return ResponseEntity.ok().build();
 	}
 	
 	
-	@PutMapping(value = "/update/{id}/{idEmpleado}")
-	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia, @PathVariable Long id, @PathVariable(value = "idEmpleado") Long idEmpleado) {
-		this.mercanciaService.updateMercancia(Mercancia, id, idEmpleado);
+	@PutMapping(value = "/updateMercancia/{id}/{id_empleado}")
+	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia, @PathVariable Long id, @PathVariable(value = "id_empleado") Long id_empleado) {
+		this.mercanciaService.updateMercancia(Mercancia, id, id_empleado);
 		return ResponseEntity.ok(Boolean.TRUE);
 	
 	}

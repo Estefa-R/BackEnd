@@ -77,7 +77,7 @@ public class MercanciaServiceImpl implements MercanciaService {
 	
 
 		Mercancia mercancia1 = mercancia.get();
-		mercancia1.setNombre(Mercancia.getNombre());
+		mercancia1.setNombre_producto(Mercancia.getNombre_producto());
 		mercancia1.setCantidad(Mercancia.getCantidad());
 		mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
 		

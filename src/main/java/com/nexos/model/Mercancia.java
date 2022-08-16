@@ -24,8 +24,8 @@ public class Mercancia implements Serializable {
 	@Column(name = "id")
 	private Long Id;
 
-	@Column(name = "nombre")
-	private String nombre;
+	@Column(name = "nombre_producto")
+	private String nombre_producto;
 	
 	@Column(name = "cantidad")
 	private String cantidad;
@@ -38,6 +38,9 @@ public class Mercancia implements Serializable {
 	
 	@Column(name = "id_empleado")
 	private Long id_empleado;
+	
+	@Column(name = "id_creado_por")
+	private Long id_creado_por;
 
 	public Mercancia() {}
 	
@@ -45,15 +48,16 @@ public class Mercancia implements Serializable {
 		this.Id = Id;		
 	}
 	
-	public Mercancia(Long Id, String nombre, String cantidad, String fecha_ingreso,
-		String fecha_modificacion, Long id_empleado) {
+	public Mercancia(Long Id, String nombre_producto, String cantidad, String fecha_ingreso,
+		String fecha_modificacion, Long id_empleado, Long id_creado_por) {
 		super();
 		this.Id = Id;
-		this.nombre = nombre;
+		this.nombre_producto = nombre_producto;
 		this.cantidad = cantidad;
 		this.fecha_ingreso = fecha_ingreso;
 		this.fecha_modificacion = fecha_modificacion;
 		this.id_empleado = id_empleado;
+		this.id_creado_por = id_creado_por;
 	}
 
 	public Long getId() {
@@ -64,12 +68,12 @@ public class Mercancia implements Serializable {
 		Id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombre_producto() {
+		return nombre_producto;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre_producto(String nombre_producto) {
+		this.nombre_producto = nombre_producto;
 	}
 
 	public String getCantidad() {
@@ -104,10 +108,19 @@ public class Mercancia implements Serializable {
 		this.id_empleado = id_empleado;
 	}
 
+	
+	public Long getId_creado_por() {
+		return id_creado_por;
+	}
+
+	public void setId_creado_por(Long id_creado_por) {
+		this.id_creado_por = id_creado_por;
+	}
+
 	@Override
 	public String toString() {
-		return "Mercancia [Id=" + Id + ", nombre=" + nombre + ", cantidad=" + cantidad
-				+ ", fecha_ingreso=" + fecha_ingreso + ", fecha_modificacion=" + fecha_modificacion + ", id_empleado="
-				+ id_empleado + "]";
+		return "Mercancia [Id=" + Id + ", nombre_producto=" + nombre_producto + ", cantidad=" + cantidad + ", fecha_ingreso="
+				+ fecha_ingreso + ", fecha_modificacion=" + fecha_modificacion + ", id_empleado=" + id_empleado
+				+ ", id_creado_por=" + id_creado_por + "]";
 	}
 }

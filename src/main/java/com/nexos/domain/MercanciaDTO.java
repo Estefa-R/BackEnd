@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 public class MercanciaDTO {
 	
 	private Long Id;
-	private String nombre;
+	private String nombre_producto;
 	private String cantidad;
 	private String fecha_ingreso;
 	private String fecha_modificacion;
 	private Long id_empleado;
+	private Long id_creado_por;
 
 }
