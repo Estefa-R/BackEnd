@@ -2,6 +2,7 @@ package com.nexos.rest;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,11 @@ public class MercanciaRest {
 	@GetMapping("/Listar")
 	private ResponseEntity<List<Mercancia>> listarMercancia(){
 		return ResponseEntity.ok(mercanciaService.getAllMercancia());
+	}
+	
+	@GetMapping("/ListarPorId/{id}")
+	private ResponseEntity<Optional<Mercancia>> listarMercanciaId(@PathVariable(value = "id") Long id){
+		return ResponseEntity.ok(mercanciaService.findById(id));
 	}
 
 	@PostMapping("/CrearMercancia")

@@ -1,6 +1,7 @@
 package com.nexos.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
@@ -16,5 +17,7 @@ public interface MercanciaService {
 	public void deleteById(long id, Long idEmpleado);
 	public Mercancia save(MercanciaDTO mercancia);
 	void updateMercancia(MercanciaDTO mercancia, Long id, Long idEmpleado);
+	public Optional<Mercancia> findById(Long id);
+	
 }
 

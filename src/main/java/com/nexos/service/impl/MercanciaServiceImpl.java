@@ -34,6 +34,11 @@ public class MercanciaServiceImpl implements MercanciaService {
 	public List<Mercancia> getAllMercancia() {
 		return mercanciaRepository.findAll();
 	}
+	
+	@Override
+	public Optional<Mercancia> findById(Long id) {
+		return mercanciaRepository.findById(id);
+	}
 
 	@Override
 	public Boolean deleteById(Long id) {
@@ -74,21 +79,16 @@ public class MercanciaServiceImpl implements MercanciaService {
 	@Override
 	public void updateMercancia(MercanciaDTO Mercancia, Long id, Long id_empleado) {
 	Optional<Mercancia> mercancia = this.mercanciaRepository.findById(id);
-	
-
 		Mercancia mercancia1 = mercancia.get();
-		mercancia1.setNombre_producto(Mercancia.getNombre_producto());
-		mercancia1.setCantidad(Mercancia.getCantidad());
-		mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
+			if(mercancia.get().getId_empleado() == id_empleado ){
+				mercancia1.setId_empleado(Mercancia.getId_empleado());
+				System.out.print("El usuario tiene permisos para editar este objeto");
+				mercancia1.setNombre_producto(Mercancia.getNombre_producto());
+				mercancia1.setCantidad(Mercancia.getCantidad());
+				mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
 		
-		if(mercancia.get().getId_empleado() == id_empleado ){
-		mercancia1.setId_empleado(Mercancia.getId_empleado());
-		System.out.print("El usuario tiene permisos para editar este objeto");
-		
-		
-		}else{
-		System.out.print("El usuario NO tiene permisos para editar este objeto");
-		
+			}else{
+				System.out.print("El usuario NO tiene permisos para editar este objeto");
 		
 		}	
 	}
