@@ -9,14 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MercanciaDTO {
+public class HistorialMercanciaDTO {
 	
-	private Long Id;
-	private String nombre;
-	private String cantidad;
-	private String fecha_ingreso;
-	private String fecha_modificacion;
+	private Long id; 
+	private Long id_mercancia;
 	private Long id_empleado;
-	private Long id_creado_por;
+	private String fecha_modificacion;
 
 }

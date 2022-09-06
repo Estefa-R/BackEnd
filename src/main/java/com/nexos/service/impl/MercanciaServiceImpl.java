@@ -54,15 +54,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 		mercanciaRepository.delete(entity);
 	}
 	
-	@Override
-	public Mercancia save(Mercancia mercancia) {
-		return mercanciaRepository.save(mercancia);
-	}
-
-	@Override
-	public Mercancia save(MercanciaDTO mercancia) {
-		return null;
-	}
 
 	@Override
 	public void deleteById(long id, Long id_empleado) {
@@ -72,7 +63,6 @@ public class MercanciaServiceImpl implements MercanciaService {
 		mercanciaRepository.deleteById(id);
 		}else{
 		System.out.print("El usuario NO tiene permisos para borrar este objeto");
-		
 		}	
 	}
 
@@ -83,7 +73,7 @@ public class MercanciaServiceImpl implements MercanciaService {
 			if(mercancia.get().getId_empleado() == id_empleado ){
 				mercancia1.setId_empleado(Mercancia.getId_empleado());
 				System.out.print("El usuario tiene permisos para editar este objeto");
-				mercancia1.setNombre_producto(Mercancia.getNombre_producto());
+				mercancia1.setNombre(Mercancia.getNombre());
 				mercancia1.setCantidad(Mercancia.getCantidad());
 				mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
 		
@@ -92,4 +82,17 @@ public class MercanciaServiceImpl implements MercanciaService {
 		
 		}	
 	}
+
+	@Override
+	public Mercancia save(Mercancia mercancia, String nombre) {
+		Mercancia mercanciaIsExist = mercanciaRepository.findByNombre(mercancia.getNombre());
+	
+		if( mercanciaIsExist.getNombre() != mercancia.getNombre() ){
+			System.out.print("El nombre del producto existe, NO se puede crear");
+			}else{
+			System.out.print("El nombre del producto no existe, se puede crear");
+		}
+		return mercanciaRepository.save(mercancia);
+	}
+	
 }
