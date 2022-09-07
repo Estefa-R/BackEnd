@@ -45,6 +45,9 @@ public class MercanciaRest {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
 			
 			mercanciaGuardada.setFecha_ingreso(mercancia.getFecha_ingreso());
+			
+			//registrarHistorico(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "creacion");
+			
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

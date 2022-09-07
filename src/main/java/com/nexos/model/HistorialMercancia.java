@@ -41,4 +41,7 @@ public class HistorialMercancia implements Serializable {
 	
 	@Column(name = "fecha_modificacion")
 	private String fecha_modificacion;
+	
+	@Column(name = "operacion")
+	private String operacion;
 }

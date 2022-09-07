@@ -17,6 +17,5 @@ public class MercanciaDTO {
 	private String fecha_ingreso;
 	private String fecha_modificacion;
 	private Long id_empleado;
-	private Long id_creado_por;
 
 }

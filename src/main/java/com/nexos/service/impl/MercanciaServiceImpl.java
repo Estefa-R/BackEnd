@@ -1,5 +1,8 @@
 package com.nexos.service.impl;
 
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+
 import java.util.List;
 import java.util.Optional;
 
@@ -75,8 +78,12 @@ public class MercanciaServiceImpl implements MercanciaService {
 				System.out.print("El usuario tiene permisos para editar este objeto");
 				mercancia1.setNombre(Mercancia.getNombre());
 				mercancia1.setCantidad(Mercancia.getCantidad());
-				mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
+				
+				// Obtenemos la fecha actual
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+			    LocalDateTime now = LocalDateTime.now(); // Convertimos la fecha a un string
 		
+				mercancia1.setFecha_modificacion(dtf.format(now));
 			}else{
 				System.out.print("El usuario NO tiene permisos para editar este objeto");
 		
@@ -87,12 +94,13 @@ public class MercanciaServiceImpl implements MercanciaService {
 	public Mercancia save(Mercancia mercancia, String nombre) {
 		Mercancia mercanciaIsExist = mercanciaRepository.findByNombre(mercancia.getNombre());
 	
-		if( mercanciaIsExist.getNombre() != mercancia.getNombre() ){
-			System.out.print("El nombre del producto existe, NO se puede crear");
-			}else{
-			System.out.print("El nombre del producto no existe, se puede crear");
+		if( mercanciaIsExist == null ){
+			System.out.print("El nombre de la mercancía no existe, se puede crear");
+			return mercanciaRepository.save(mercancia);
+		}else{
+				System.out.print("El nombre de la mercancía existe, NO se puede crear");
+				return null;
 		}
-		return mercanciaRepository.save(mercancia);
 	}
 	
 }
