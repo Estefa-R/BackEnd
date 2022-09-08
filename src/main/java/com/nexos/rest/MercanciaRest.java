@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,11 +44,8 @@ public class MercanciaRest {
 	private ResponseEntity<Mercancia> saveMercancia (@RequestBody MercanciaDTO mercancia, String nombre) {
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
-			
 			mercanciaGuardada.setFecha_ingreso(mercancia.getFecha_ingreso());
-			
-			//registrarHistorico(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "creacion");
-			
+			//saveHistorialMercancia(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -59,7 +57,6 @@ public class MercanciaRest {
 		obj.setNombre(dto.getNombre());
 		obj.setCantidad(dto.getCantidad());
 		obj.setFecha_ingreso(dto.getFecha_ingreso()); 
-		obj.setFecha_modificacion(dto.getFecha_modificacion());
 		obj.setId_empleado(dto.getId_empleado());
 		return obj;
 	}

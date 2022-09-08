@@ -32,10 +32,7 @@ public class Mercancia implements Serializable {
 	
 	@Column(name = "fecha_ingreso")
 	private String fecha_ingreso;
-	
-	@Column(name = "fecha_modificacion")
-	private String fecha_modificacion;
-	
+		
 	@Column(name = "id_empleado")
 	private Long id_empleado;
 
@@ -45,14 +42,12 @@ public class Mercancia implements Serializable {
 		this.Id = Id;		
 	}
 
-	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, String fecha_modificacion,
-			Long id_empleado, Long id_creado_por) {
+	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso,	Long id_empleado, Long id_creado_por) {
 		super();
 		Id = id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.fecha_ingreso = fecha_ingreso;
-		this.fecha_modificacion = fecha_modificacion;
 		this.id_empleado = id_empleado;
 	}
 
@@ -88,14 +83,6 @@ public class Mercancia implements Serializable {
 		this.fecha_ingreso = fecha_ingreso;
 	}
 
-	public String getFecha_modificacion() {
-		return fecha_modificacion;
-	}
-
-	public void setFecha_modificacion(String fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
-	}
-
 	public Long getId_empleado() {
 		return id_empleado;
 	}
@@ -107,7 +94,7 @@ public class Mercancia implements Serializable {
 	@Override
 	public String toString() {
 		return "Mercancia [Id=" + Id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", fecha_ingreso="
-				+ fecha_ingreso + ", fecha_modificacion=" + fecha_modificacion + ", id_empleado=" + id_empleado + "]";
+				+ fecha_ingreso + ", id_empleado=" + id_empleado + "]";
 	}
 	
 

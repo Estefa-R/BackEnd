@@ -10,17 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "HistorialMercancia")
+@Table(name = "HISTORIALMERCANCIA")
 public class HistorialMercancia implements Serializable {
 	
 	/**
@@ -44,4 +35,64 @@ public class HistorialMercancia implements Serializable {
 	
 	@Column(name = "operacion")
 	private String operacion;
+	
+	public HistorialMercancia() {
+	}
+
+	public HistorialMercancia(Long id, Long id_mercancia, Long id_empleado, String fecha_modificacion,
+			String operacion) {
+		super();
+		this.id = id;
+		this.id_mercancia = id_mercancia;
+		this.id_empleado = id_empleado;
+		this.fecha_modificacion = fecha_modificacion;
+		this.operacion = operacion;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId_mercancia() {
+		return id_mercancia;
+	}
+
+	public void setId_mercancia(Long id_mercancia) {
+		this.id_mercancia = id_mercancia;
+	}
+
+	public Long getId_empleado() {
+		return id_empleado;
+	}
+
+	public void setId_empleado(Long id_empleado) {
+		this.id_empleado = id_empleado;
+	}
+
+	public String getFecha_modificacion() {
+		return fecha_modificacion;
+	}
+
+	public String setFecha_modificacion(String fecha_modificacion) {
+		return fecha_modificacion;
+	}
+
+	public String getOperacion() {
+		return operacion;
+	}
+
+	public void setOperacion(String operacion) {
+		this.operacion = operacion;
+	}
+
+	@Override
+	public String toString() {
+		return "HistorialMercancia [id=" + id + ", id_mercancia=" + id_mercancia + ", id_empleado=" + id_empleado
+				+ ", fecha_modificacion=" + fecha_modificacion + ", operacion=" + operacion + "]";
+	}
+	
 }
