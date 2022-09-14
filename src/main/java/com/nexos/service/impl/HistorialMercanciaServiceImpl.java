@@ -23,8 +23,10 @@ public class HistorialMercanciaServiceImpl implements HistorialMercanciaService 
 	@Override
 	public HistorialMercancia save (HistorialMercancia historialMercancia, Long id_empleado, Long id_mercancia, String operacion ) {
 		
+			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
 		    LocalDateTime now = LocalDateTime.now();
+		    historialMercancia.setFecha_modificacion(dtf.format(now));
 		return historialMercanciaRepository.save(historialMercancia);
 		
 		// Obtenemos la fecha actual

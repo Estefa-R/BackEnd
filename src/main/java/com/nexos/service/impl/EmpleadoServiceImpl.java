@@ -1,6 +1,7 @@
 package com.nexos.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,6 +23,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	@Override
 	public List<Empleado> getAllEmpleados() {
 		return empleadoRepository.findAll();
+	}
+	
+	@Override
+	public Optional<Empleado> findById(Long id) {
+		return empleadoRepository.findById(id);
 	}
 	
 	@Override

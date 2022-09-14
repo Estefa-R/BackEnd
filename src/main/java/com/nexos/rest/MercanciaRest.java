@@ -42,16 +42,18 @@ public class MercanciaRest {
 
 	@PostMapping("/CrearMercancia")
 	private ResponseEntity<Mercancia> saveMercancia (@RequestBody MercanciaDTO mercancia, String nombre) {
+	
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
 			mercanciaGuardada.setFecha_ingreso(mercancia.getFecha_ingreso());
+			
 			//saveHistorialMercancia(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-	
+
 	private Mercancia castDTOEntity (MercanciaDTO dto) {
 		Mercancia obj = new Mercancia();
 		obj.setNombre(dto.getNombre());
