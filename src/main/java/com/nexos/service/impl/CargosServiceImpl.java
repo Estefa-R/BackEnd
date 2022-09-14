@@ -1,6 +1,7 @@
 package com.nexos.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,6 +23,11 @@ public class CargosServiceImpl implements CargosService{
 	@Override
 	public List<Cargos> getAllCargos() {
 		return cargosRepository.findAll();
+	}
+	
+	@Override
+	public Optional<Cargos> findById(Long id) {
+		return cargosRepository.findById(id);
 	}
 	
 	@Override
