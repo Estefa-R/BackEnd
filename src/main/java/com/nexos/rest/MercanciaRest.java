@@ -36,7 +36,7 @@ public class MercanciaRest {
 	}
 	
 	@GetMapping("/BuscarPorId/{id}")
-	private ResponseEntity<Optional<Mercancia>> buscarMercanciaId(@PathVariable(value = "id") Long id){
+	private ResponseEntity<Optional<Mercancia>> buscarMercanciaById(@PathVariable(value = "id") Long id){
 		return ResponseEntity.ok(mercanciaService.findById(id));
 	}
 

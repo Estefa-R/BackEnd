@@ -33,7 +33,7 @@ public class EmpleadoRest {
 	}
 	
 	@GetMapping("/BuscarPorId/{id}")
-	private ResponseEntity<Optional<Empleado>> buscarEmpleadosId(@PathVariable(value = "id") Long id){
+	private ResponseEntity<Optional<Empleado>> buscarEmpleadoById(@PathVariable(value = "id") Long id){
 		return ResponseEntity.ok(empleadoService.findById(id));
 	}
 
