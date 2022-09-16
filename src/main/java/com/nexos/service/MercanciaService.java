@@ -17,7 +17,7 @@ public interface MercanciaService {
 	public void deleteById(long id, Long idEmpleado);
 	void updateMercancia(MercanciaDTO mercancia, Long id, Long idEmpleado);
 	public Optional<Mercancia> findById(Long id);
-	
+	public List<Mercancia> findByNombre(String nombre);
 	
 }
 

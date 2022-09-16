@@ -36,6 +36,11 @@ public class EmpleadoRest {
 	private ResponseEntity<Optional<Empleado>> buscarEmpleadoById(@PathVariable(value = "id") Long id){
 		return ResponseEntity.ok(empleadoService.findById(id));
 	}
+	
+	@GetMapping("/BuscarPorNombre/{nombre}")
+	private ResponseEntity<List<Empleado>> buscarEmpleadoByNombre(@PathVariable String nombre){
+		return ResponseEntity.ok(empleadoService.findByNombre(nombre));
+	}
 
 	@PostMapping("/CrearEmpleado")
 	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO empleado) {

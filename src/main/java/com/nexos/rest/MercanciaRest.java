@@ -39,6 +39,11 @@ public class MercanciaRest {
 	private ResponseEntity<Optional<Mercancia>> buscarMercanciaById(@PathVariable(value = "id") Long id){
 		return ResponseEntity.ok(mercanciaService.findById(id));
 	}
+	
+	@GetMapping("/BuscarPorNombre/{nombre}")
+	private ResponseEntity<List<Mercancia>> buscarMercanciaByNombre(@PathVariable String nombre){
+		return ResponseEntity.ok(mercanciaService.findByNombre(nombre));
+	}
 
 	@PostMapping("/CrearMercancia")
 	private ResponseEntity<Mercancia> saveMercancia (@RequestBody MercanciaDTO mercancia, String nombre) {

@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nexos.domain.EmpleadoDTO;
 import com.nexos.model.Empleado;
 import com.nexos.repository.EmpleadoRepository;
 import com.nexos.service.EmpleadoService;
@@ -41,8 +40,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 	
 	@Override
-	public Empleado save(EmpleadoDTO empleado) {
-		return null;
+	public List<Empleado> findByNombre(String nombre) {
+		return empleadoRepository.findByNombreContainingIgnoreCase(nombre);
 	}
 
 }

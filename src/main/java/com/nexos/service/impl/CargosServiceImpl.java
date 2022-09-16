@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nexos.domain.CargosDTO;
 import com.nexos.model.Cargos;
 import com.nexos.repository.CargosRepository;
 import com.nexos.service.CargosService;
@@ -39,10 +38,10 @@ public class CargosServiceImpl implements CargosService{
 	public Cargos save(Cargos cargos) {
 		return cargosRepository.save(cargos);
 	}
-
+	
 	@Override
-	public Cargos save(CargosDTO cargos) {
-		return null;
+	public List<Cargos> findByCargo(String cargo) {
+		return cargosRepository.findByCargoContainingIgnoreCase(cargo);
 	}
 
 }

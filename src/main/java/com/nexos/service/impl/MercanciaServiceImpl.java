@@ -39,6 +39,11 @@ public class MercanciaServiceImpl implements MercanciaService {
 	public Optional<Mercancia> findById(Long id) {
 		return mercanciaRepository.findById(id);
 	}
+	
+	@Override
+	public List<Mercancia> findByNombre(String nombre) {
+		return mercanciaRepository.findByNombreContainingIgnoreCase(nombre);
+	}
 
 	@Override
 	public Boolean deleteById(Long id) {
@@ -93,6 +98,5 @@ public class MercanciaServiceImpl implements MercanciaService {
 				System.out.print("El nombre de la mercancía existe, NO se puede crear");
 				return null;
 		}
-	}
-	
+	}	
 }
