@@ -72,14 +72,15 @@ public class MercanciaServiceImpl implements MercanciaService {
 	}
 
 	@Override
-	public void updateMercancia(MercanciaDTO Mercancia, Long id, Long id_empleado) {
-	Optional<Mercancia> mercancia = this.mercanciaRepository.findById(id);
+	public void updateMercancia(MercanciaDTO Mercancia) {
+	Optional<Mercancia> mercancia = this.mercanciaRepository.findById(Mercancia.getId());
 		Mercancia mercancia1 = mercancia.get();
-			if(mercancia.get().getId_empleado() == id_empleado ){
+			if(mercancia.get().getId_empleado() == Mercancia.getId_empleado() ){
 				mercancia1.setId_empleado(Mercancia.getId_empleado());
 				System.out.print("El usuario tiene permisos para editar este objeto");
 				mercancia1.setNombre(Mercancia.getNombre());
 				mercancia1.setCantidad(Mercancia.getCantidad());
+				mercancia1.setFecha_modificacion(Mercancia.getFecha_modificacion());
 
 			}else{
 				System.out.print("El usuario NO tiene permisos para editar este objeto");

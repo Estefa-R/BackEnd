@@ -1,6 +1,8 @@
 package com.nexos.rest;
 
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +52,11 @@ public class MercanciaRest {
 	
 		try {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
-			mercanciaGuardada.setFecha_ingreso(mercancia.getFecha_ingreso());
+			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+		    LocalDateTime now = LocalDateTime.now();
+		    
+			mercanciaGuardada.setFecha_ingreso(dtf.format(now));
 			
 			//saveHistorialMercancia(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
@@ -68,9 +74,9 @@ public class MercanciaRest {
 		return obj;
 	}
 	
-	@PutMapping(value = "/updateMercancia/{id}/{id_empleado}")
-	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia, @PathVariable Long id, @PathVariable(value = "id_empleado") Long id_empleado) {
-		this.mercanciaService.updateMercancia(Mercancia, id, id_empleado);
+	@PutMapping(value = "/updateMercancia")
+	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia) {
+		this.mercanciaService.updateMercancia(Mercancia);
 		return ResponseEntity.ok(Boolean.TRUE);
 	
 	}

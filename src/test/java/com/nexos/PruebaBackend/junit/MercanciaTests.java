@@ -21,8 +21,6 @@ import com.nexos.model.Mercancia;
 import com.nexos.repository.MercanciaRepository;
 
 
-
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class MercanciaTests {
@@ -66,8 +64,13 @@ public class MercanciaTests {
 	
 	@Test
 	public void updateMercanciaTest() {
-		long id = 16;
-		Mercancia mercancia = new Mercancia (id);
+		long id = 13;
+		String nombre = "Bomba de aceite";
+		String cantidad = "34";
+		String fecha_ingreso = "2022-04-06";
+		Long id_empleado = (long) 12;
+		String fecha_modificacion = "2022-09-20";
+		Mercancia mercancia = new Mercancia (id, nombre, cantidad, fecha_ingreso, id_empleado, fecha_modificacion);
 		mercancia.setId(id);
 		
 		repository.save(mercancia);

@@ -27,7 +27,7 @@ public class HistorialMercanciaServiceImpl implements HistorialMercanciaService 
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
 		    LocalDateTime now = LocalDateTime.now();
 		    historialMercancia.setFecha_modificacion(dtf.format(now));
-		return historialMercanciaRepository.save(historialMercancia);
+		    return historialMercanciaRepository.save(historialMercancia);
 		
 		// Obtenemos la fecha actual
 		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
