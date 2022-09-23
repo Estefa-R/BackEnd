@@ -1,6 +1,8 @@
 package com.nexos.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,14 +41,16 @@ public class HistorialMercancia implements Serializable {
 	public HistorialMercancia() {
 	}
 
-	public HistorialMercancia(Long id, Long id_mercancia, Long id_empleado, String fecha_modificacion,
-			String operacion) {
+	public HistorialMercancia( Long id_mercancia,Long id_empleado, String operacion) {
 		super();
-		this.id = id;
+
 		this.id_mercancia = id_mercancia;
 		this.id_empleado = id_empleado;
-		this.fecha_modificacion = fecha_modificacion;
 		this.operacion = operacion;
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+	    LocalDateTime now = LocalDateTime.now();
+		this.fecha_modificacion = dtf.format(now);
 	}
 
 	public Long getId() {

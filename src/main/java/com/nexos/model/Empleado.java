@@ -56,7 +56,6 @@ public class Empleado implements Serializable {
 	}
 
 	public Empleado() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

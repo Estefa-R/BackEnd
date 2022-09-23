@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
+import com.nexos.service.impl.HistorialMercanciaServiceImpl;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -58,7 +59,7 @@ public class MercanciaRest {
 		    
 			mercanciaGuardada.setFecha_ingreso(dtf.format(now));
 			
-			//saveHistorialMercancia(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
+			new HistorialMercanciaServiceImpl().save(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

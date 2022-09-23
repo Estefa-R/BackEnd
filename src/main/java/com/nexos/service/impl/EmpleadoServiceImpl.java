@@ -15,7 +15,6 @@ import com.nexos.service.EmpleadoService;
 @Service
 @Transactional
 public class EmpleadoServiceImpl implements EmpleadoService {
-	
 	@Autowired
 	private EmpleadoRepository empleadoRepository;
 	
