@@ -1,7 +1,6 @@
 package com.nexos.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ import com.nexos.service.HistorialMercanciaService;
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/HistorialMercancia/")
-public class HistorialMercanciaRest<historialMercancia> {
+public class HistorialMercanciaRest {
 	
 	@Autowired
 	private HistorialMercanciaService historialMercanciaService;
@@ -28,7 +27,8 @@ public class HistorialMercanciaRest<historialMercancia> {
 	}
 	
 	@GetMapping("/BuscarPorId/{id}")
-	private ResponseEntity<Optional<HistorialMercancia>> buscarHistorialMercanciaById(@PathVariable(value = "id") Long id){
+	private ResponseEntity<List<HistorialMercancia>> buscarHistorialMercanciaById(@PathVariable(value = "id") int id){
 		return ResponseEntity.ok(historialMercanciaService.findById(id));
 	}
+
 }
