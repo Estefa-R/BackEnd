@@ -12,5 +12,5 @@ public interface EmpleadoService {
 	public Empleado create (Empleado empleado);
 	public Empleado save(Empleado empleado);
 	public Optional<Empleado> findById(Long id);
-	public List<Empleado> findByNombre(String nombre);
+	public List<Empleado> findByApellido(String apellido);
 }

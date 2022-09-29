@@ -12,7 +12,7 @@ import com.nexos.model.Empleado;
 public interface EmpleadoRepository extends JpaRepository<Empleado, Long>{
 
 	@Query("select p from Empleado p where p.nombre like %?1%")
-	List<Empleado> findByNombreLike(String nombre);
+	List<Empleado> findByApellidoLike(String apellido);
 	
-	List<Empleado> findByNombreContainingIgnoreCase(String nombre);
+	List<Empleado> findByApellidoContainingIgnoreCase(String apellido);
 }

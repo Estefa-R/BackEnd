@@ -37,9 +37,9 @@ public class EmpleadoRest {
 		return ResponseEntity.ok(empleadoService.findById(id));
 	}
 	
-	@GetMapping("/BuscarPorNombre/{nombre}")
-	private ResponseEntity<List<Empleado>> buscarEmpleadoByNombre(@PathVariable String nombre){
-		return ResponseEntity.ok(empleadoService.findByNombre(nombre));
+	@GetMapping("/BuscarPorApellido/{apellido}")
+	private ResponseEntity<List<Empleado>> buscarEmpleadoByApellido(@PathVariable String apellido){
+		return ResponseEntity.ok(empleadoService.findByApellido(apellido));
 	}
 
 	@PostMapping("/CrearEmpleado")

@@ -1,7 +1,6 @@
 package com.nexos.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -25,14 +24,16 @@ public class HistorialMercanciaServiceImpl implements HistorialMercanciaService 
 	}
 	
 	@Override
-	public void save(Long id_mercancia, Long id_empleado, String operacion) {
-	    HistorialMercancia historialMercancia = new HistorialMercancia(id_mercancia, id_empleado, operacion);
+	public void save(Long id_empleado, Long id_mercancia, String operacion) {
+	    HistorialMercancia historialMercancia = new HistorialMercancia(id_empleado, id_mercancia, operacion);
 	    historialMercanciaRepository.save(historialMercancia);
 	}
 
 
 	@Override
-	public Optional<HistorialMercancia> findById(Long id) {
-		return historialMercanciaRepository.findById(id);
+	public List<HistorialMercancia> findById(int id) {
+		List<HistorialMercancia> historialMercancia= historialMercanciaRepository.findByIdXEmpleado(Long.valueOf(id));
+		return historialMercancia;
 	}
+	
 }

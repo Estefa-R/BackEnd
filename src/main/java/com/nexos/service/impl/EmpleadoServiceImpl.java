@@ -39,8 +39,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 	
 	@Override
-	public List<Empleado> findByNombre(String nombre) {
-		return empleadoRepository.findByNombreContainingIgnoreCase(nombre);
+	public List<Empleado> findByApellido(String apellido) {
+		return empleadoRepository.findByApellidoContainingIgnoreCase(apellido);
 	}
 
 }
