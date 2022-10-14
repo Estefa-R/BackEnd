@@ -62,6 +62,7 @@ public class MercanciaTests {
 	     assertNull(mercancia);
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	public void updateMercanciaTest() {
 		long id = 13;

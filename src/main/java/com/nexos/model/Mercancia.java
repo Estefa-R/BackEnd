@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "MERCANCIA")
 public class Mercancia implements Serializable {
@@ -38,9 +40,11 @@ public class Mercancia implements Serializable {
 	
 	@Column(name = "fecha_modificacion")
 	private String fecha_modificacion;
-	
-	public Mercancia() {}
-	
+
+	public Mercancia() {
+		
+	}
+
 	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, Long id_empleado,
 			String fecha_modificacion) {
 		super();
@@ -51,60 +55,5 @@ public class Mercancia implements Serializable {
 		this.id_empleado = id_empleado;
 		this.fecha_modificacion = fecha_modificacion;
 	}
-
-	public Long getId() {
-		return Id;
-	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public String getFecha_ingreso() {
-		return fecha_ingreso;
-	}
-
-	public void setFecha_ingreso(String fecha_ingreso) {
-		this.fecha_ingreso = fecha_ingreso;
-	}
-
-	public Long getId_empleado() {
-		return id_empleado;
-	}
-
-	public void setId_empleado(Long id_empleado) {
-		this.id_empleado = id_empleado;
-	}
-
-	public String getFecha_modificacion() {
-		return fecha_modificacion;
-	}
-
-	public void setFecha_modificacion(String fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
-	}
-
-	@Override
-	public String toString() {
-		return "Mercancia [Id=" + Id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", fecha_ingreso="
-				+ fecha_ingreso + ", id_empleado=" + id_empleado + ", fecha_modificacion=" + fecha_modificacion + "]";
-	}
-	
 	
 }

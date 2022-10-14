@@ -1,7 +1,7 @@
 package com.nexos.rest;
 
 import java.net.URI;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
-import com.nexos.service.impl.HistorialMercanciaServiceImpl;
+import com.nexos.service.impl.AuditoriaSitioWebServiceImpl;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -55,11 +55,11 @@ public class MercanciaRest {
 			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
 			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-		    LocalDateTime now = LocalDateTime.now();
+		    LocalDate now = LocalDate.now();
 		    
 			mercanciaGuardada.setFecha_ingreso(dtf.format(now));
 			
-			new HistorialMercanciaServiceImpl().save(mercanciaGuardada.getId_empleado(), mercanciaGuardada.getId(), "Creado");
+			new AuditoriaSitioWebServiceImpl().save(mercanciaGuardada.getNombre(), mercanciaGuardada.getNombre(), "Creado");
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -78,12 +78,14 @@ public class MercanciaRest {
 	@PutMapping(value = "/updateMercancia")
 	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia) {
 		this.mercanciaService.updateMercancia(Mercancia);
+		new AuditoriaSitioWebServiceImpl().save(Mercancia.getNombre(), Mercancia.getNombre(), "Modificado");
 		return ResponseEntity.ok(Boolean.TRUE);
 	
 	}
 	
 	@DeleteMapping(value = "/deleteMercancia/{id}/{id_empleado}")
 	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "id") Long id, @PathVariable(value = "id_empleado") Long id_empleado ) {
+//		new AuditoriaSitioWebServiceImpl().save(id, id_empleado, "Borrado");
 		mercanciaService.deleteById(id, id_empleado);
 		return ResponseEntity.ok().build();
 	}
