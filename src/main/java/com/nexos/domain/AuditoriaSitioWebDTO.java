@@ -1,5 +1,7 @@
 package com.nexos.domain;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HistorialMercanciaDTO {
+public class AuditoriaSitioWebDTO {
 	
 	private Long id; 
-	private Long id_mercancia;
-	private Long id_empleado;
+	private String nombre_empleado;
+	private LocalDate fecha_modificacion;
 	private String operacion; // creacion, modificacion, borrado
-	private String fecha_modificacion;
+	private String modulo;
 
 }
