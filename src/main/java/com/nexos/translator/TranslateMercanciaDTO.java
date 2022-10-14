@@ -11,14 +11,14 @@ public class TranslateMercanciaDTO implements Translator<Mercancia, MercanciaDTO
 	@Override
 	public MercanciaDTO translate(Mercancia mercancia) {
 		
-		MercanciaDTO imput = new MercanciaDTO();
-		imput.setId(mercancia.getId());
-		imput.setNombre(mercancia.getNombre());
-		imput.setCantidad(mercancia.getCantidad());
-		imput.setFecha_ingreso(mercancia.getFecha_ingreso());
-		imput.setId_empleado(mercancia.getId_empleado());
-		imput.setFecha_modificacion(mercancia.getFecha_modificacion());
-		return imput;
+		MercanciaDTO input = new MercanciaDTO();
+		input.setId(mercancia.getId());
+		input.setNombre(mercancia.getNombre());
+		input.setCantidad(mercancia.getCantidad());
+		input.setFecha_ingreso(mercancia.getFecha_ingreso());
+		input.setId_empleado(mercancia.getId_empleado());
+		input.setFecha_modificacion(mercancia.getFecha_modificacion());
+		return input;
 	}
 
 }
