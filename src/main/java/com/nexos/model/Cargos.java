@@ -9,9 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Builder
+@Getter
 @Entity
 @Table(name = "CARGOS")
 public class Cargos implements Serializable {
