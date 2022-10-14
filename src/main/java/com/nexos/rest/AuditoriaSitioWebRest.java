@@ -20,7 +20,7 @@ public class AuditoriaSitioWebRest {
 	@Autowired
 	private AuditoriaSitioWebService AuditoriaSitioWebService;
 	
-	@GetMapping("/Listar")
+	@GetMapping("/listar")
 	private ResponseEntity<List<AuditoriaSitioWebDTO>> listarHistorialMercancia() {
 		return ResponseEntity.ok(AuditoriaSitioWebService.getAllHistorialMercancia());
 	}
