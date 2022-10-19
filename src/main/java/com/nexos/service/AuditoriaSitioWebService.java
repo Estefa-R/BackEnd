@@ -5,6 +5,6 @@ import java.util.List;
 import com.nexos.domain.AuditoriaSitioWebDTO;
 public interface AuditoriaSitioWebService {
 	
-	void save(String nombre_empleado, String operacion, String modulo);
+	void save(String nombre_empleado, String operacion, String nombre_mercancia);
 	public List<AuditoriaSitioWebDTO> getAllHistorialMercancia();
 }

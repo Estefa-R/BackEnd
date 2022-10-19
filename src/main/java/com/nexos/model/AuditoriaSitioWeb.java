@@ -38,6 +38,17 @@ public class AuditoriaSitioWeb implements Serializable {
 	@Column(name = "operacion")
 	private String operacion;
 	
-	@Column(name = "modulo")
-	private String modulo;
+	@Column(name = "nombre_mercancia")
+	private String nombre_mercancia;
+	
+	public AuditoriaSitioWeb() {}
+	
+	public AuditoriaSitioWeb(Long id, String nombre_empleado, LocalDate fecha_modificacion, String operacion, String nombre_mercancia) {
+		super();
+		this.id = id;
+		this.nombre_empleado = nombre_empleado;
+		this.fecha_modificacion = fecha_modificacion;
+		this.operacion = operacion;
+		this.nombre_mercancia = nombre_mercancia;
+	}
 }
