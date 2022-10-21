@@ -36,11 +36,8 @@ public class AuditoriaSitioWeb implements Serializable {
   @Column(name = "nombre_mercancia")
   private String nombre_mercancia;
 
-  @Column(name = "fecha_creacion")
-  private LocalDate fecha_creacion;
-
-  @Column(name = "fecha_modificacion")
-  private LocalDate fecha_modificacion;
+  @Column(name = "fecha")
+  private LocalDate fecha;
   
   @Column(name = "operacion")
   private String operacion;

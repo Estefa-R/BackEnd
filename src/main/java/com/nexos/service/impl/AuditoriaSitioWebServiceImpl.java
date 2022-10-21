@@ -28,7 +28,7 @@ public class AuditoriaSitioWebServiceImpl implements AuditoriaSitioWebService {
       return AuditoriaSitioWebDTO.builder()
           .id(item.getId())
           .nombre_empleado(item.getNombre_empleado())
-          .fecha_creacion(item.getFecha_creacion())
+          .fecha(item.getFecha())
           .operacion(item.getOperacion())
           .nombre_mercancia(item.getNombre_mercancia()).build();
     }).collect(Collectors.toList());
@@ -36,8 +36,14 @@ public class AuditoriaSitioWebServiceImpl implements AuditoriaSitioWebService {
   
   @Override
   public void save(String nombre_empleado, String nombre_mercancia, String operacion) {
-    AuditoriaSitioWeb auditoriaSitioWeb = new AuditoriaSitioWeb(null, nombre_empleado, nombre_mercancia, LocalDate.now(), null, operacion);
+    AuditoriaSitioWeb auditoriaSitioWeb = new AuditoriaSitioWeb(null, nombre_empleado, nombre_mercancia, LocalDate.now(), operacion);
     AuditoriaSitioWebRepository.save(auditoriaSitioWeb);
   }
-
+  
+  @Override
+  public void updateMercancia (String nombre_empleado, String nombre_mercancia, String operacion) {
+      AuditoriaSitioWeb auditoriaSitioWeb = new AuditoriaSitioWeb(null, nombre_empleado, nombre_mercancia, LocalDate.now(), operacion);
+      AuditoriaSitioWebRepository.save(auditoriaSitioWeb);
+  }
+  
 }

@@ -14,7 +14,7 @@ public class TranslateAuditoriaSitioWeb implements Translator<AuditoriaSitioWebD
     return AuditoriaSitioWeb.builder()
         .id(auditoriaSitioWebDTO.getId())
         .nombre_empleado(auditoriaSitioWebDTO.getNombre_empleado())
-        .fecha_creacion(auditoriaSitioWebDTO.getFecha_creacion())
+        .fecha(auditoriaSitioWebDTO.getFecha())
         .operacion(auditoriaSitioWebDTO.getOperacion())
         .nombre_mercancia(auditoriaSitioWebDTO.getNombre_mercancia()).build();
   }
