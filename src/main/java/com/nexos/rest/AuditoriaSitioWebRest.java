@@ -14,7 +14,7 @@ import com.nexos.service.AuditoriaSitioWebService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/AuditoriaSitioWeb/")
+@RequestMapping("/AuditoriaSitioWeb")
 public class AuditoriaSitioWebRest {
 	
 	@Autowired
@@ -24,4 +24,5 @@ public class AuditoriaSitioWebRest {
 	private ResponseEntity<List<AuditoriaSitioWebDTO>> listarHistorialMercancia() {
 		return ResponseEntity.ok(AuditoriaSitioWebService.getAllHistorialMercancia());
 	}
+	
 }
