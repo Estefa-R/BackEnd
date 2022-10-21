@@ -16,8 +16,7 @@ public class AuditoriaSitioWebDTO {
 	private Long id; 
 	private String nombre_empleado;
 	private String nombre_mercancia;
-	private LocalDate fecha_creacion;
-	private LocalDate fecha_modificacion;
+	private LocalDate fecha;
 	private String operacion;
 
 }
