@@ -8,16 +8,16 @@ import com.nexos.model.Mercancia;
 
 public interface MercanciaService {
 
-	public Mercancia create (Mercancia mercancia);
-	public List<Mercancia> findAll();
-	public List<Mercancia> getAllMercancia();
+	Mercancia create (Mercancia mercancia);
+	List<Mercancia> findAll();
+	List<Mercancia> getAllMercancia();
 	MercanciaDTO save(MercanciaDTO mercanciaDto);
-	public Boolean deleteById(Long id);
-	public void delete(Mercancia entity);
-	public void deleteById(long id, Long idEmpleado);
-	void updateMercanciaDTO(MercanciaDTO MercanciaDto);
-	public Optional<Mercancia> findById(Long id);
-	public List<Mercancia> findByNombre(String nombre);
+	Boolean deleteById(Long id);
+	void delete(Mercancia entity);
+	void deleteById(long id, Long idEmpleado);
+	public MercanciaDTO updateMercanciaDTO (MercanciaDTO mercanciaDTO);
+	Optional<Mercancia> findById(Long id);
+	List<Mercancia> findByNombre(String nombre);
 	
 }
 
