@@ -1,8 +1,6 @@
 package com.nexos.rest;
 
 import java.net.URI;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nexos.domain.MercanciaDTO;
 import com.nexos.model.Mercancia;
 import com.nexos.service.MercanciaService;
-import com.nexos.service.impl.AuditoriaSitioWebServiceImpl;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -49,43 +46,24 @@ public class MercanciaRest {
 	}
 
 	@PostMapping("/CrearMercancia")
-	private ResponseEntity<Mercancia> saveMercancia (@RequestBody MercanciaDTO mercancia, String nombre) {
-	
+	private ResponseEntity<MercanciaDTO> saveMercancia (@RequestBody MercanciaDTO mercanciaDto) {
 		try {
-			Mercancia mercanciaGuardada = mercanciaService.save(castDTOEntity(mercancia), nombre);
-			
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-		    LocalDate now = LocalDate.now();
-		    
-			mercanciaGuardada.setFecha_ingreso(dtf.format(now));
-			
-			new AuditoriaSitioWebServiceImpl().save(mercanciaGuardada.getNombre(), mercanciaGuardada.getNombre(), "Creado");
+			MercanciaDTO mercanciaGuardada = mercanciaService.save(mercanciaDto);
 			return ResponseEntity.created(new URI("Mercancia/" + mercanciaGuardada.getId())).body(mercanciaGuardada);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-
-	private Mercancia castDTOEntity (MercanciaDTO dto) {
-		Mercancia obj = new Mercancia();
-		obj.setNombre(dto.getNombre());
-		obj.setCantidad(dto.getCantidad());
-		obj.setFecha_ingreso(dto.getFecha_ingreso()); 
-		obj.setId_empleado(dto.getId_empleado());
-		return obj;
-	}
 	
 	@PutMapping(value = "/updateMercancia")
-	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO Mercancia) {
-		this.mercanciaService.updateMercancia(Mercancia);
-		new AuditoriaSitioWebServiceImpl().save(Mercancia.getNombre(), Mercancia.getNombre(), "Modificado");
+	public ResponseEntity<Object> updateMercancia(@RequestBody MercanciaDTO mercanciaDto) {
+		this.mercanciaService.updateMercanciaDTO(mercanciaDto);
 		return ResponseEntity.ok(Boolean.TRUE);
 	
 	}
 	
 	@DeleteMapping(value = "/deleteMercancia/{id}/{id_empleado}")
 	public ResponseEntity<?> deleteMercancia(@PathVariable(value = "id") Long id, @PathVariable(value = "id_empleado") Long id_empleado ) {
-//		new AuditoriaSitioWebServiceImpl().save(id, id_empleado, "Borrado");
 		mercanciaService.deleteById(id, id_empleado);
 		return ResponseEntity.ok().build();
 	}
