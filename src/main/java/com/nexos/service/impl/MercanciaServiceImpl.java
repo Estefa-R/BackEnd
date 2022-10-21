@@ -102,7 +102,7 @@ public class MercanciaServiceImpl implements MercanciaService {
                   .nombre_mercancia(mercanciaDto.getNombre())
                   .nombre_empleado(empleado.isPresent() ? empleado.get().getNombre() : "N/A")
                   .operacion(Constants.CREATED)
-                  .fecha_creacion(now)
+                  .fecha(now)
                   .build()
               )
       );
@@ -114,19 +114,35 @@ public class MercanciaServiceImpl implements MercanciaService {
   }
 
   @Override
-  public void updateMercanciaDTO (MercanciaDTO MercanciaDTO) {
-    Optional<Mercancia> mercancia = this.mercanciaRepository.findById(MercanciaDTO.getId());
-    Mercancia mercancia1 = mercancia.get();
-    if (mercancia.get().getId_empleado().equals(MercanciaDTO.getId_empleado())) {
-      mercancia1.setId_empleado(MercanciaDTO.getId_empleado());
+  public MercanciaDTO updateMercanciaDTO (MercanciaDTO mercanciaDTO) {
+    Optional<Mercancia> mercancia = this.mercanciaRepository.findById(mercanciaDTO.getId());
+    if (mercancia.get().getId_empleado().equals(mercanciaDTO.getId_empleado())) {
+      mercanciaDTO.setId_empleado(mercanciaDTO.getId_empleado());
       System.out.print("El usuario tiene permisos para editar este objeto");
-      mercancia1.setNombre(MercanciaDTO.getNombre());
-      mercancia1.setCantidad(MercanciaDTO.getCantidad());
-      mercancia1.setFecha_modificacion(MercanciaDTO.getFecha_modificacion());
 
+      mercanciaDTO.setNombre(mercanciaDTO.getNombre());
+      mercanciaDTO.setCantidad(mercanciaDTO.getCantidad());
+      LocalDate now = LocalDate.now();
+      mercanciaDTO.getFecha_ingreso();
+      mercanciaDTO.getFecha_modificacion();
+
+      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado());
+      auditoriaSitioWebRepository.save(
+          translateAuditoriaSitioWeb
+              .translate(AuditoriaSitioWebDTO
+                  .builder()
+                  .id(null)
+                  .nombre_mercancia(mercanciaDTO.getNombre())
+                  .nombre_empleado(empleado.isPresent() ? empleado.get().getNombre() : "N/A")
+                  .operacion(Constants.UPTADE)
+                  .fecha(now)
+                  .build()
+              )
+      );
+      return translateMercanciaDTO.translate(mercanciaRepository.save(translateMercancia.translate(mercanciaDTO)));
     } else {
       System.out.print("El usuario NO tiene permisos para editar este objeto");
-
+    return null;
     }
   }
   @Override
