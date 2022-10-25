@@ -43,24 +43,13 @@ public class EmpleadoRest {
 	}
 
 	@PostMapping("/CrearEmpleado")
-	private ResponseEntity<Empleado> saveEmpleado(@RequestBody EmpleadoDTO empleado) {
+	private ResponseEntity<EmpleadoDTO> saveEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
 		try {
-			Empleado empleadoGuardado = empleadoService.save(castDTOEmpleadoEntity(empleado));
-			empleadoGuardado.setFecha_ingreso_empresa(empleado.getFecha_ingreso_empresa());
+			EmpleadoDTO empleadoGuardado = empleadoService.save(empleadoDTO);
+			empleadoGuardado.setFecha_ingreso_empresa(empleadoDTO.getFecha_ingreso_empresa());
 			return ResponseEntity.created(new URI("/Empleado/" + empleadoGuardado.getId())).body(empleadoGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-	}
-	
-	private Empleado castDTOEmpleadoEntity (EmpleadoDTO dto) {
-		Empleado obj = new Empleado();
-		
-		obj.setNombre(dto.getNombre());
-		obj.setApellido(dto.getApellido());
-		obj.setEdad(dto.getEdad());
-		obj.setId_cargo(dto.getId_cargo());
-		obj.setFecha_ingreso_empresa(dto.getFecha_ingreso_empresa());
-		return obj;
 	}
 }
