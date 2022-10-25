@@ -43,20 +43,12 @@ public class CargosRest {
 	}
 	
 	@PostMapping("/CrearCargos")
-	private ResponseEntity<Cargos> saveCargos(@RequestBody CargosDTO cargos) {;
+	private ResponseEntity<CargosDTO> saveCargos(@RequestBody CargosDTO cargosDTO) {;
 		try {
-			Cargos cargosGuardado = cargosService.save(castDTOCargosEntity(cargos));
+			CargosDTO cargosGuardado = cargosService.save(cargosDTO);
 			return ResponseEntity.created(new URI("/Cargos/" + cargosGuardado.getCargo())).body(cargosGuardado);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
-	
-	private Cargos castDTOCargosEntity (CargosDTO cargos) {
-		Cargos obj = new Cargos();
-		
-		obj.setCargo(cargos.getCargo());
-		return obj;
-	}	
-	
 }

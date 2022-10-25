@@ -8,13 +8,22 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nexos.domain.CargosDTO;
 import com.nexos.model.Cargos;
 import com.nexos.repository.CargosRepository;
 import com.nexos.service.CargosService;
+import com.nexos.translator.TraslateCargos;
+import com.nexos.translator.TraslateCargosDTO;
 
 @Service
 @Transactional
 public class CargosServiceImpl implements CargosService{
+    
+    @Autowired
+    private TraslateCargos translatCargos;
+    
+    @Autowired
+    private TraslateCargosDTO translatCargosDTO;
 	
 	@Autowired
 	private CargosRepository cargosRepository;
@@ -35,8 +44,8 @@ public class CargosServiceImpl implements CargosService{
 	}
 
 	@Override
-	public Cargos save(Cargos cargos) {
-		return cargosRepository.save(cargos);
+	public CargosDTO save(CargosDTO cargosDTO) {
+	    return translatCargosDTO.translate(cargosRepository.save(translatCargos.translate(cargosDTO)));
 	}
 	
 	@Override
