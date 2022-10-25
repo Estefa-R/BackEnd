@@ -123,7 +123,6 @@ public class MercanciaServiceImpl implements MercanciaService {
       mercanciaDTO.setNombre(mercanciaDTO.getNombre());
       mercanciaDTO.setCantidad(mercanciaDTO.getCantidad());
       LocalDate now = LocalDate.now();
-      mercanciaDTO.getFecha_ingreso();
       mercanciaDTO.getFecha_modificacion();
 
       Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado());
