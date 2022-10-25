@@ -15,4 +15,5 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Long>{
 	List<Empleado> findByApellidoLike(String apellido);
 	
 	List<Empleado> findByApellidoContainingIgnoreCase(String apellido);
+
 }

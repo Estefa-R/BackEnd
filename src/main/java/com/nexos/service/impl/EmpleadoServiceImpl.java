@@ -8,13 +8,23 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nexos.domain.EmpleadoDTO;
 import com.nexos.model.Empleado;
 import com.nexos.repository.EmpleadoRepository;
 import com.nexos.service.EmpleadoService;
+import com.nexos.translator.TranslateEmpleado;
+import com.nexos.translator.TranslateEmpleadoDTO;
 
 @Service
 @Transactional
 public class EmpleadoServiceImpl implements EmpleadoService {
+    
+    @Autowired
+    private TranslateEmpleado translatEmpleado;
+    
+    @Autowired
+    private TranslateEmpleadoDTO translatEmpleadoDTO;
+    
 	@Autowired
 	private EmpleadoRepository empleadoRepository;
 	
@@ -34,13 +44,12 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 	
 	@Override
-	public Empleado save(Empleado empleado) {
-		return empleadoRepository.save(empleado);
+	public EmpleadoDTO save(EmpleadoDTO empleadoDTO) {
+	    return translatEmpleadoDTO.translate(empleadoRepository.save(translatEmpleado.translate(empleadoDTO)));
 	}
 	
 	@Override
 	public List<Empleado> findByApellido(String apellido) {
 		return empleadoRepository.findByApellidoContainingIgnoreCase(apellido);
 	}
-
 }
