@@ -38,7 +38,7 @@ public class Mercancia implements Serializable {
 	private String fecha_ingreso;
 		
 	@Column(name = "id_empleado")
-	private Long id_empleado;
+	private Empleado id_empleado;
 	
 	@Column(name = "fecha_modificacion")
 	private String fecha_modificacion;
@@ -47,14 +47,14 @@ public class Mercancia implements Serializable {
 		
 	}
 
-	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, Long id_empleado,
+	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, Empleado id_empleado2,
 			String fecha_modificacion) {
 		super();
 		Id = id;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.fecha_ingreso = fecha_ingreso;
-		this.id_empleado = id_empleado;
+		this.id_empleado = id_empleado2;
 		this.fecha_modificacion = fecha_modificacion;
 	}
 	
