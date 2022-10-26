@@ -71,7 +71,7 @@ public class MercanciaTests {
 		String fecha_ingreso = "2022-04-06";
 		Long id_empleado = (long) 12;
 		String fecha_modificacion = "2022-09-20";
-		Mercancia mercancia = new Mercancia (id, nombre, cantidad, fecha_ingreso, id_empleado, fecha_modificacion);
+		Mercancia mercancia = new Mercancia ();
 		mercancia.setId(id);
 		
 		repository.save(mercancia);
