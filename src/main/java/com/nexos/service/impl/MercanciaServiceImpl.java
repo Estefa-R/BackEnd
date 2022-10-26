@@ -15,6 +15,9 @@ import com.nexos.repository.EmpleadoRepository;
 import com.nexos.translator.TranslateAuditoriaSitioWeb;
 import com.nexos.translator.TranslateMercancia;
 import com.nexos.translator.TranslateMercanciaDTO;
+
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,7 @@ import com.nexos.model.Mercancia;
 import com.nexos.repository.MercanciaRepository;
 import com.nexos.service.MercanciaService;
 
+@Log4j2
 @Service
 @Transactional
 public class MercanciaServiceImpl implements MercanciaService {
@@ -93,7 +97,7 @@ public class MercanciaServiceImpl implements MercanciaService {
       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       LocalDate now = LocalDate.now();
       mercanciaDto.setFecha_ingreso(dtf.format(now));
-      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDto.getId_empleado());
+      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDto.getId_empleado().getId());
       auditoriaSitioWebRepository.save(
           translateAuditoriaSitioWeb
               .translate(AuditoriaSitioWebDTO
@@ -115,6 +119,7 @@ public class MercanciaServiceImpl implements MercanciaService {
 
   @Override
   public MercanciaDTO updateMercanciaDTO (MercanciaDTO mercanciaDTO) {
+      log.info("iniciando en el metodo actualizar : {}", mercanciaDTO);
     Optional<Mercancia> mercancia = this.mercanciaRepository.findById(mercanciaDTO.getId());
     if (mercancia.get().getId_empleado().equals(mercanciaDTO.getId_empleado())) {
       mercanciaDTO.setId_empleado(mercanciaDTO.getId_empleado());
@@ -125,7 +130,7 @@ public class MercanciaServiceImpl implements MercanciaService {
       LocalDate now = LocalDate.now();
       mercanciaDTO.getFecha_modificacion();
 
-      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado());
+      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado().getId());
       auditoriaSitioWebRepository.save(
           translateAuditoriaSitioWeb
               .translate(AuditoriaSitioWebDTO
@@ -147,12 +152,28 @@ public class MercanciaServiceImpl implements MercanciaService {
   @Override
   public void deleteById(long id, Long id_empleado) {
     Optional<Mercancia> mercancia = mercanciaRepository.findById(id);
+    Optional<Empleado> empleado = empleadoRepository.findById(id_empleado);
     if (mercancia.isPresent()) {
       if (mercancia.get().getId_empleado().equals(id_empleado)) {
+        LocalDate now = LocalDate.now();
         System.out.print("El usuario tiene permisos para borrar este objeto");
         mercanciaRepository.deleteById(id);
+        auditoriaSitioWebRepository.save(
+            translateAuditoriaSitioWeb
+                .translate(AuditoriaSitioWebDTO
+                    .builder()
+                    .id(null)
+                    .nombre_mercancia(mercancia.get().getNombre())
+                    .nombre_empleado(empleado.isPresent() ? empleado.get().getNombre() : "N/A")
+                    .operacion(Constants.DELETE)
+                    .fecha(now)
+                    .build()
+                )
+        );
       } else {
         System.out.print("El usuario NO tiene permisos para borrar este objeto");
+
+
       }
     } else {
       System.out.println("No existe");
