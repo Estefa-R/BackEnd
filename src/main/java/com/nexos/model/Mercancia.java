@@ -38,7 +38,8 @@ public class Mercancia implements Serializable {
 	private String fecha_ingreso;
 		
 	@Column(name = "id_empleado")
-	private Empleado id_empleado;
+	private Long id_empleado;
+	//private Empleado id_empleado;
 	
 	@Column(name = "fecha_modificacion")
 	private String fecha_modificacion;
@@ -47,7 +48,7 @@ public class Mercancia implements Serializable {
 		
 	}
 
-	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, Empleado id_empleado2,
+	public Mercancia(Long id, String nombre, String cantidad, String fecha_ingreso, Long id_empleado2,
 			String fecha_modificacion) {
 		super();
 		Id = id;

@@ -1,6 +1,6 @@
 package com.nexos.domain;
 
-import com.nexos.model.Empleado;
+//import com.nexos.model.Empleado;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +17,8 @@ public class MercanciaDTO {
 	private String nombre;
 	private String cantidad;
 	private String fecha_ingreso;
-	private Empleado id_empleado;
+	private Long id_empleado;
+	//private Empleado id_empleado;
 	private String fecha_modificacion;
 
 }
