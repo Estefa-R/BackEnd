@@ -13,5 +13,5 @@ public interface AuditoriaSitioWebRepository extends JpaRepository<AuditoriaSiti
 	
 	@Query(value = "SELECT * FROM auditoria_sitio_web", nativeQuery=true)
 	List<AuditoriaSitioWeb> getAllHistorialMercancia();
-	
+
 }

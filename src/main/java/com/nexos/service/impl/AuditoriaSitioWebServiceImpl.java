@@ -45,5 +45,6 @@ public class AuditoriaSitioWebServiceImpl implements AuditoriaSitioWebService {
       AuditoriaSitioWeb auditoriaSitioWeb = new AuditoriaSitioWeb(null, nombre_empleado, nombre_mercancia, LocalDate.now(), operacion);
       AuditoriaSitioWebRepository.save(auditoriaSitioWeb);
   }
+
   
 }
