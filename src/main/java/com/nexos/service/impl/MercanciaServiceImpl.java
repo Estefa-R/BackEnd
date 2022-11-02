@@ -92,12 +92,13 @@ public class MercanciaServiceImpl implements MercanciaService {
   public MercanciaDTO save(MercanciaDTO mercanciaDto) {
     Mercancia mercanciaIsExist = mercanciaRepository.findByNombre(mercanciaDto.getNombre());
     if (mercanciaIsExist == null) {
-      System.out.print("El nombre de la mercancía no existe, se puede crear");
+        log.info("El nombre de la mercancía no existe, se puede crear");
 
       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       LocalDate now = LocalDate.now();
       mercanciaDto.setFecha_ingreso(dtf.format(now));
-      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDto.getId_empleado().getId());
+      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDto.getId_empleado());
+     // Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDto.getId_empleado().getId());
       auditoriaSitioWebRepository.save(
           translateAuditoriaSitioWeb
               .translate(AuditoriaSitioWebDTO
@@ -112,25 +113,24 @@ public class MercanciaServiceImpl implements MercanciaService {
       );
       return translateMercanciaDTO.translate(mercanciaRepository.save(translateMercancia.translate(mercanciaDto)));
     } else {
-      System.out.print("El nombre de la mercancía existe, NO se puede crear");
+        log.info("El nombre de la mercancía existe, NO se puede crear");
       return null;
     }
   }
 
   @Override
   public MercanciaDTO updateMercanciaDTO (MercanciaDTO mercanciaDTO) {
-      log.info("iniciando en el metodo actualizar : {}", mercanciaDTO);
     Optional<Mercancia> mercancia = this.mercanciaRepository.findById(mercanciaDTO.getId());
     if (mercancia.get().getId_empleado().equals(mercanciaDTO.getId_empleado())) {
       mercanciaDTO.setId_empleado(mercanciaDTO.getId_empleado());
-      System.out.print("El usuario tiene permisos para editar este objeto");
+      log.info("El usuario tiene permisos para editar este objeto");
 
       mercanciaDTO.setNombre(mercanciaDTO.getNombre());
       mercanciaDTO.setCantidad(mercanciaDTO.getCantidad());
       LocalDate now = LocalDate.now();
       mercanciaDTO.getFecha_modificacion();
-
-      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado().getId());
+      //Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado().getId());
+      Optional<Empleado> empleado = empleadoRepository.findById(mercanciaDTO.getId_empleado());
       auditoriaSitioWebRepository.save(
           translateAuditoriaSitioWeb
               .translate(AuditoriaSitioWebDTO
@@ -145,7 +145,7 @@ public class MercanciaServiceImpl implements MercanciaService {
       );
       return translateMercanciaDTO.translate(mercanciaRepository.save(translateMercancia.translate(mercanciaDTO)));
     } else {
-      System.out.print("El usuario NO tiene permisos para editar este objeto");
+        log.info("El usuario NO tiene permisos para editar este objeto");
     return null;
     }
   }
@@ -156,7 +156,8 @@ public class MercanciaServiceImpl implements MercanciaService {
     if (mercancia.isPresent()) {
       if (mercancia.get().getId_empleado().equals(id_empleado)) {
         LocalDate now = LocalDate.now();
-        System.out.print("El usuario tiene permisos para borrar este objeto");
+        
+        log.info("El usuario tiene permisos para borrar este objeto");
         mercanciaRepository.deleteById(id);
         auditoriaSitioWebRepository.save(
             translateAuditoriaSitioWeb
@@ -171,12 +172,10 @@ public class MercanciaServiceImpl implements MercanciaService {
                 )
         );
       } else {
-        System.out.print("El usuario NO tiene permisos para borrar este objeto");
-
-
+          log.info("El usuario NO tiene permisos para borrar este objeto");
       }
     } else {
-      System.out.println("No existe");
+        log.info("No existe");
     }
   }
 }
